@@ -41,4 +41,25 @@ class Pile{
         }
         return $this->cartes[$i];
     }
+
+    /**
+     * La méthode retirerCarte() retire la dernière carte de la pile si celle-ci n'est pas vide, et lance une exception sinon.
+     */
+
+    public function retirerCarte() : void{
+        if ($this->getNbCartes() == 0){
+            throw new Exception("Impossible de supprimer une carte car la pile est déjà vide");
+        }
+        array_pop($this->cartes);
+    }
+
+    /**
+     * La méthode ajouterCarte() ajoute la carte mise en paramètre à la fin de la pile.
+     * 
+     * @param $carte
+     */
+
+    public function ajouterCarte(Carte $carte) : void{
+        $this->cartes[] = $carte;
+    }
 }
