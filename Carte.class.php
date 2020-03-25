@@ -28,15 +28,6 @@ public function __construct( String $valeur = "" , String $couleur = "", int $or
     $this->ordre = $ordre;
 }
 
-/**
-* public function __construct( Valeur $valeur = "" , Couleur $couleur = "", int $ordre = 0)
-* {
-*    $this->getValeur = $valeur;
-*    $this->getCouleur = $couleur;
-*    $this->ordre = $ordre;
-* }
-**/
-
 
 
 /**
@@ -55,10 +46,10 @@ public function __construct( String $valeur = "" , String $couleur = "", int $or
     {
         $res = sprintf("%9s","--------")."\n" ;
         $res = $res ."|".sprintf("%9s","|")."\n" ;
-        $res = $res .'|'.sprintf("%6s",$this->valeur) .sprintf("%3s","|")."\n";
+        $res = $res .'|'.sprintf("%13s",$this->valeur) .sprintf("%5s","|")."\n";
         $res = $res ."|".sprintf("%9s","|")."\n" ;
+        $res = $res ."|".sprintf("%17s",$this->couleur).sprintf("%3s","|")."\n";
         $res = $res ."|".sprintf("%9s","|")."\n" ;
-        $res = $res ."|".sprintf("%8s",$this->couleur)."|\n" ;
         $res = $res .sprintf("%9s","--------") ;
         return $res;
     }
