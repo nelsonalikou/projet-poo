@@ -11,7 +11,7 @@ class Valeur{
      */
 
     public function __construct($valeur) {
-        $valeurs = ["As", "Valet", "Dame", "Roi", "Jocker"];
+        $valeurs = ["A", "V", "D", "R", "J"];
 
         if (gettype($valeur) == gettype("str")){
             $valeur = ucfirst($valeur);
