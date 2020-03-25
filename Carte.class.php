@@ -44,7 +44,7 @@ public function __construct( String $valeur = "" , String $couleur = "", int $or
 
     public function __toString() : string
     {
-        $res = sprintf("%9s")."\n" ;
+        $res = "\n" ;
         $res = $res ." \e[47m $this->valeur\e[0m"."\e[47m   \e[0m"."\n";
         $res = $res ." \e[47m     \e[0m"."\n" ;
         $res = $res ." \e[47m   $this->couleur\e[0m"."\e[47m \e[0m"."\n";
