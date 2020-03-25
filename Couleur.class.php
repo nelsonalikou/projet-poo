@@ -19,7 +19,7 @@ class Couleur
 
     Public function __construct (string $couleur) 
     {
-        $couleurs = ["Pique","Trèfle","Carreau","Coeur"];
+        $couleurs = ["Pique","Trèfle","Carreau","Coeur", "Joker"];
 
         $couleur = ucfirst($couleur);
         $i = 0;
@@ -47,6 +47,8 @@ class Couleur
             case $couleurs[3]:
                 $couleur = "♥";
             break;
+            case $couleurs[4]:
+                $couleur = "*";
         }
 
         $this->couleur = $couleur;
