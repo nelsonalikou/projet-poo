@@ -2,4 +2,4 @@
 require_once("Valeur.class.php");
 
 $valeur = new Valeur(2);
-echo $valeur->getValeur();
+echo $valeur;
