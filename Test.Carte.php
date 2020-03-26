@@ -6,10 +6,12 @@ require_once "Carte.class.php";
 require_once "Valeur.class.php";
 require_once "Couleur.class.php";
 
-$carte = new Carte(2, "Pique" , 2);
+$carte = new Carte(2, "pique" , 2);
 echo $carte;
 echo "\n";
-/*$val = $carte->getSymboleValeur();
+$val = $carte->getSymboleValeur();
 echo "$val.\n";
 $ordre = $carte->getOrdre();
-echo "$ordre\n";*/
+echo "$ordre\n";
+$ordre = $carte->getOrdre();
+echo "$ordre\n";

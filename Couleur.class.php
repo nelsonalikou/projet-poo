@@ -49,7 +49,7 @@ class Couleur
     }
     
     public function __toString():string{
-        $symboles = ["Pique"=>"\e[30;47♠\e[0m","Trefle"=>"\e[30;47♣\e[0m","Carreau"=>"\e[31;47m♦\e[0m","Coeur"=>"\e[31;47m♥\e[0m", "Joker"=>"\e[32;47m*\e[0m"];
+        $symboles = ["Pique"=>"\e[30;47m♠\e[0m","Trefle"=>"\e[30;47m♣\e[0m","Carreau"=>"\e[31;47m♦\e[0m","Coeur"=>"\e[31;47m♥\e[0m", "Joker"=>"\e[32;47m*\e[0m"];
         return $symboles[$this->couleur];
     }
     
