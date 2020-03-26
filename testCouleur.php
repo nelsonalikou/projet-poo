@@ -2,16 +2,16 @@
 require_once("Couleur.class.php");
 
 $couleur = new Couleur("pique");
-echo $couleur->getCouleur();
+echo $couleur;
 
-$couleur = new Couleur("trèfle");
-echo $couleur->getCouleur();
+$couleur = new Couleur("trefle");
+echo $couleur;
 
 $couleur = new Couleur("carreau");
-echo $couleur->getCouleur();
+echo $couleur;
 
 $couleur = new Couleur("coeur");
-echo $couleur->getCouleur();
+echo $couleur;
 
 $couleur = new Couleur("joker");
-echo $couleur->getCouleur();
+echo $couleur;
