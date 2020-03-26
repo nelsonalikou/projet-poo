@@ -30,8 +30,8 @@ class Table{
      * @param $pile Colonne à ajouter
      */
 
-    public function ajouterColonne(Pile $pile) : void{
-        if ($pile->getNbCarte() != 5){
+    public function ajouterColonne(Array $colonne) : void{
+        if (count($colonne) != 5){
             throw new Exception("Nombre de carte incorrect");
         }
         if ($this->getNbCol() > 7){

@@ -28,14 +28,13 @@ class Pile{
                 $this->$cartes[] = new Card("Joker", "Joker",14);
                 $this->$cartes[] = new Card("Joker", "Joker",14);
                 $this->$cartes[] = new Card("Joker", "Joker",14);
+            }
         }
     }
-    
+
     public function melangerCartes() : void{
         shuffle($this->cartes);
-
     }
-    
     
     /**
      * La méthode getNbCartes() retourne le nombre de cartes dans la pile.
