@@ -5,6 +5,8 @@ require_once "Valeur.class.php";
 require_once "Couleur.class.php";
 require_once "Pile.class.php";
 
+require_once "Home.class.php";
+
 $as = new Valeur("a");
 $coeur = new Couleur("coeur");
 $pique = new Couleur("pique");
@@ -23,3 +25,7 @@ echo $pile->getNbCartes()."\n";
 
 $pile->ajouterCarte($asDePique);
 echo $pile->getNbCartes();
+
+$Home = new Home($Pile);
+
+Var_dump($Home);

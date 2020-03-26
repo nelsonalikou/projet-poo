@@ -16,7 +16,7 @@ class Home{
      */
 
     public function __construct(Pile  $Pile){
-        if (count($Pile) < 1){
+        if ($Pile->getNbCartes() < 1){
             throw new Exception("Indice invalide");}
         $this->Home[] = $this->getCarte(count($Pile)-1) ;
     }
