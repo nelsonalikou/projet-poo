@@ -27,10 +27,10 @@ class Home{
      * 
      * @param $carte
      */
-    public function ajouterCarte(Carte $carte) : void{
+    /*public function ajouterCarte(Carte $carte) : void{
         $this->Home[] = $carte;
     }
-
+*/
 
 
 

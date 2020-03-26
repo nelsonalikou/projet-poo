@@ -26,6 +26,6 @@ echo $pile->getNbCartes()."\n";
 $pile->ajouterCarte($asDePique);
 echo $pile->getNbCartes();
 
-$Home = new Home($Pile);
+$Home = new Home($pile);
 
 Var_dump($Home);
