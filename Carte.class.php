@@ -21,7 +21,7 @@ Class Carte
     * @param $ordre ordre de la carte
     */
 
-    public function __construct( String $valeur = "" , String $couleur = "", int $ordre = 0)
+    public function __construct(Valeur $valeur, Couleur $couleur, int $ordre = 0)
     {
         $this->valeur = $valeur;
         $this->couleur = $couleur;
@@ -43,15 +43,17 @@ Class Carte
 
     public function __toString() : string
     {
-        if ($this->couleur == "♦" || $this->couleur == "♥"){
-            $couleur = "\e[31m".$this->couleur."\e[0m";
-            $valeur = "\e[31m".$this->valeur."\e[0m";
-        }else if ($this->couleur == "♣" || $this->couleur == "♠"){
-            $couleur = "\e[30m".$this->couleur."\e[0m";
-            $valeur = "\e[30m".$this->valeur."\e[0m";
+        $valeur = $this->valeur->getValeur();
+        $couleur = $this->couleur->getCouleur();
+        if ($couleur == "♦" || $couleur == "♥"){
+            $couleur = "\e[31m".$couleur."\e[0m";
+            $valeur = "\e[31m".$valeur."\e[0m";
+        }else if ($couleur == "♣" || $couleur == "♠"){
+            $couleur = "\e[30m".$couleur."\e[0m";
+            $valeur = "\e[30m".$valeur."\e[0m";
         }else{
-            $couleur = "\e[32m".$this->couleur."\e[0m";
-            $valeur = "\e[32m".$this->valeur."\e[0m";
+            $couleur = "\e[32m".$couleur."\e[0m";
+            $valeur = "\e[32m".$valeur."\e[0m";
         }
 
         $res = "\n" ;

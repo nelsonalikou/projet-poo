@@ -1,5 +1,5 @@
 <?php
 require_once("Valeur.class.php");
 
-$valeur = new Valeur("as");
+$valeur = new Valeur(2);
 echo $valeur->getValeur();
