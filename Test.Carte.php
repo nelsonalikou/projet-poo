@@ -12,8 +12,10 @@ $jCoul = new Couleur("joker");
 $coeur = new Couleur("coeur");
 $pique = new Couleur("pique");
 
-$asDeCoeur = new Carte($joker, $jCoul , 13);
-echo "$asDeCoeur\n";
+$Joker = new Carte($joker, $jCoul , 13);
+echo "$Joker";
 
-$asDeCoeur = new Carte($as, $pique , 13);
-echo "$asDeCoeur\n";
+$asDePique = new Carte($as, $pique , 13);
+echo "$asDePique";
+
+echo "$Joker,$asDePique";
