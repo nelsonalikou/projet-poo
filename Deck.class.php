@@ -18,11 +18,10 @@ class Deck{
 
     public function piocherCarte() : void
         {
-        if ($this->getNbCartes() == 0){
+        if (count($this->cartes) == 0){
             throw new Exception("Le deck est vide");
         }
-
-        $this->piles[$i]->retirerCarte();
+        $this->cartes = array_pop($this->cartes);
     }
 
 
