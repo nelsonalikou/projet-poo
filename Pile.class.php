@@ -11,9 +11,9 @@ class Pile{
      * 
      * @param $cartes Liste de cartes
      */
-    public function __construct (string $nomFichier="Cartes_Solitaire")
+    public function __construct (string $nomFichier="")
     {
-        $this->$cartes = array();
+        $this->cartes = array();
         if($nomFichier != ""){
             $fichier = parse_ini_file($nomFichier, true, INI_SCANNER_TYPED) ;
             
@@ -23,11 +23,11 @@ class Pile{
             {
                 foreach ($fichier as $couleur => $cartes)
                     foreach ($cartes as $valeur => $ordre)
-                        $this->$cartes[] = new Card((string)$valeur, (string)$couleur, (int)$ordre);
-                $this->$cartes[] = new Card("Joker", "Joker",14);
-                $this->$cartes[] = new Card("Joker", "Joker",14);
-                $this->$cartes[] = new Card("Joker", "Joker",14);
-                $this->$cartes[] = new Card("Joker", "Joker",14);
+                        $this->$cartes[] = new Carte((string)$valeur, (string)$couleur, (int)$ordre);
+                $this->$cartes[] = new Carte("Joker", "Joker",14);
+                $this->$cartes[] = new Carte("Joker", "Joker",14);
+                $this->$cartes[] = new Carte("Joker", "Joker",14);
+                $this->$cartes[] = new Carte("Joker", "Joker",14);
             }
         }
     }
@@ -68,7 +68,7 @@ class Pile{
      * La méthode retirerCarte() retire la dernière carte de la pile si celle-ci n'est pas vide, et lance une exception sinon.
      */
 
-    public function jouerCarte() : Card{
+    public function jouerCarte() : Carte{
         if ($this->getNbCartes() == 0){
             throw new Exception("Impossible de supprimer une carte car la pile est déjà vide");
         }

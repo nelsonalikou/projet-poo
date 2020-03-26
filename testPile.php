@@ -10,9 +10,10 @@ require_once "Home.class.php";
 $asDeCoeur = new Carte("as", "coeur" , 1);
 $asDePique = new Carte("as", "pique" , 1);
 
-$pile = new Pile([$asDeCoeur, $asDePique]);
+$pile = new Pile("Cartes_Solitaire.ini");
+var_dump($pile);
 
-echo $pile->getNbCartes();
+/*echo $pile->getNbCartes();
 echo $pile->getCarte(0);
 echo $pile->getCarte(1);
 
@@ -24,4 +25,5 @@ echo $pile->getNbCartes();
 
 $Home = new Home($pile);
 
-Var_dump($Home);
+Var_dump($Home);*/
+

@@ -1,0 +1,4 @@
+" \e[47m     \e[0m" : spon un cadre blanc (un contenu qui est une chaine de caractère peut etre inséré à l'interieur de ce cadre)
+"\e[30;47m    \e[0m"  : tansforme son contenu en lui donant une couleur noire
+"\e[31;47m     \e[0m"  : tansforme son contenu en lui donant une couleur rouge
+"\e[32;47m      \e[0m"  : tansforme son contenu en lui donant une couleur verte
