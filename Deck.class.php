@@ -1,13 +1,14 @@
 <?php
 
 require_once("Pile.class.php");
+require_once("Carte.class.php");
 
 class Deck{
     private $cartes; // Array
 
-    public function __construct(Array $cartes)
+    public function __construct()
     {
-        $this->cartes = $cartes;
+        $this->cartes = [];
     }
 
     /**
@@ -24,8 +25,12 @@ class Deck{
         $this->cartes = array_pop($this->cartes);
     }
 
+    public function getNbCartes() : int{
+        return count($this->cartes);
+    }
 
-
-
+    public function ajouterCarte(Carte $carte) : void{
+        $this->cartes[] = $cartes;
+    }
 
 }

@@ -14,11 +14,12 @@ class Home{
      * @param $home Liste contenant une seule carte
      */
 
-    public function __construct(Array $home){
-        if (count($home) != 1){
+    public function __construct(){
+        /*if (count($home) != 1){
             throw new InvalidArgumentException("Le home doit être initialisé avec une seule carte");
         }
-        $this->home = $home;
+        $this->home = $home;*/
+        $this->home = [];
     }
 
     
