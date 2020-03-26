@@ -45,3 +45,13 @@ $coul = $carte4->getCouleur();
 echo "$coul\n";
 $ordre = $carte4->getOrdre();
 echo "$ordre\n";
+
+$carte5 = new Carte("Joker", "Joker" , 14);
+echo $carte5;
+echo "\n";
+$val = $carte5->getSymboleValeur();
+echo "$val.\n";
+$coul = $carte5->getCouleur();
+echo "$coul\n";
+$ordre = $carte5->getOrdre();
+echo "$ordre\n";

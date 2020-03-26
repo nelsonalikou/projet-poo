@@ -69,12 +69,17 @@ Class Carte
             $res = $res ." \e[47m \e[31;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n";
             $res = $res ." \e[47m     \e[0m"."\n" ;
             $res = $res ." \e[47m   $coul\e[0m"."\e[47m \e[0m"."\n";
-        }else  {
+        }else if ($coul == "\e[30;47m♠\e[0m" || $coul == "\e[30;47m♣\e[0m") {
             $res = "\n" ;
             $res = $res ." \e[47m \e[30;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n";
             $res = $res ." \e[47m     \e[0m"."\n" ;
             $res = $res ." \e[47m   $coul\e[0m"."\e[47m \e[0m"."\n";
-        }
+        }else {
+        $res = "\n" ;
+        $res = $res ." \e[47m \e[32;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n"; 
+        $res = $res ." \e[47m     \e[0m"."\n" ;
+        $res = $res ." \e[47m   $coul\e[0m"."\e[47m \e[0m"."\n";
+    }
         
         /*$res = "\n" ;
         $res = $res ." \e[47m {$this->valeur->__toString()}\e[0m"."\e[47m   \e[0m"."\n";
