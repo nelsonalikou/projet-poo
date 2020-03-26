@@ -1,28 +1,44 @@
 <?php
 
 require_once("Pile.class.php");
+require_once("Carte.class.php");
 
 class Table{
-    private $piles; // Pile
+    private $piles; // Array
 
     /**
-     * Constructeur de la classe Pile. Ce constructeur affecte à l'attribut $piles une liste de 7 objets de la classe Pile contenant chacun
-     * 5 cartes. Si ces conditions ne sont pas respectées, une excpetion est lancée.
-     * 
-     * @param $piles Liste de piles
+     * Constructeur de la classe Pile. Ce constructeur affecte à l'attribut $piles une liste vide.
      */
 
     public function __construct(Array $piles){
-        if (count($piles) != 7){
-            throw new Excpetion("Nombre de colonnes incorrect");
+        $this->piles = [];
+    }
+
+    /**
+     * La méthode getNbCol() retourne le nombre de colonnes de la pile.
+     * 
+     * @return Nombre de colonnes
+     */
+
+    public function getNbCol() : int{
+        return count($this->piles);
+    }
+
+    /**
+     * La méthode ajouterColonne() ajoute à l'attribut $piles la pile mise en paramètre si celle-ci à bien 5 cartes.
+     * 
+     * @param $pile Colonne à ajouter
+     */
+
+    public function ajouterColonne(Pile $pile) : void{
+        if ($pile->getNbCarte() != 5){
+            throw new Exception("Nombre de carte incorrect");
         }
-        for ($i = 0; $i < count($piles); $i++){
-            if ($piles[$i]->getNbCartes() != 5){
-                $n = $i+1;
-                throw new Exception("Nombre de carte incorrect dans la colonne $n");
-            }
-            $this->piles[] = $piles[$i];
+        if ($this->getNbCol() > 7){
+            throw new Exception("La table est deja complète");
         }
+
+        $this->piles[] = $pile;
     }
 
     /**
@@ -47,7 +63,7 @@ class Table{
      */
 
     public function retirerCarte(int $i) : void{
-        if ($i < 0 || $i >= 5){
+        if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
         if ($this->getNbCartes($i) == 0){
@@ -55,6 +71,24 @@ class Table{
         }
 
         $this->piles[$i]->retirerCarte();
+    }
+
+    /**
+     * La méthode ajouterCarte() ajoute la carte mise en paramètre dans la pile d'indice i.
+     * 
+     * @param $i Indice de la colonne
+     * @param $carte Carte à ajouter
+     */
+
+    public function ajouterCarte(int $i, Carte $carte) : void{
+        if ($i < 0 || $i >= 7){
+            throw new Exception("Indice invalide");
+        }
+        if ($this->getNbCartes($i) == 0){
+            throw new Exception("La pile est déjà vide");
+        }
+
+        $this->piles[$i]->ajouterCarte($carte);
     }
 
     public function __toString() : string{
