@@ -37,7 +37,7 @@ class Pile{
 
     public function getCarte(int $i) : Carte{
         if ($i >= $this->getNbCartes() || $i < 0){
-            throw new Excpetion("Indice invalide");
+            throw new Exception("Indice invalide");
         }
         return $this->cartes[$i];
     }
