@@ -3,7 +3,7 @@
 require_once("Carte.class.php");
 
 class Pile{
-    private $cartes; // Carte
+    private $cartes; // array de Cartes
 
     /**
      * Constructeur de la classe Pile.
@@ -11,13 +11,31 @@ class Pile{
      * 
      * @param $cartes Liste de cartes
      */
-
-    public function __construct(Array $cartes){
-        for ($i = 0; $i < count($cartes); $i++){
-            $this->cartes[] = $cartes[$i];
+    public function __construct (string $nomFichier="")
+    {
+        $this->$cartes = array();
+        if($nomFichier != ""){
+            $fichier = parse_ini_file($nomFichier, true, INI_SCANNER_TYPED) ;
+            
+            if ($fichier === false)
+                die('Erreur de lecture') ;
+            else
+            {
+                foreach ($fichier as $couleur => $cartes)
+                    foreach ($cartes as $valeur => $ordre)
+                        $this->$cartes[] = new Card((string)$valeur, (string)$couleur, (int)$ordre);
+                $this->$cartes[] = new Card("Joker", "Joker",14);
+                $this->$cartes[] = new Card("Joker", "Joker",14);
+                $this->$cartes[] = new Card("Joker", "Joker",14);
+                $this->$cartes[] = new Card("Joker", "Joker",14);
+            }
         }
     }
 
+    public function melangerCartes() : void{
+        shuffle($this->cartes);
+    }
+    
     /**
      * La méthode getNbCartes() retourne le nombre de cartes dans la pile.
      * 
@@ -37,20 +55,26 @@ class Pile{
 
     public function getCarte(int $i) : Carte{
         if ($i >= $this->getNbCartes() || $i < 0){
-            throw new Exception("Indice invalide");
+            throw new OutOfBoundsException("Indice invalide");
         }
         return $this->cartes[$i];
     }
 
+    
+    public function estVide() : bool {
+        return count($this->cartes)==0;
+    }
     /**
      * La méthode retirerCarte() retire la dernière carte de la pile si celle-ci n'est pas vide, et lance une exception sinon.
      */
 
-    public function retirerCarte() : void{
+    public function jouerCarte() : Card{
         if ($this->getNbCartes() == 0){
             throw new Exception("Impossible de supprimer une carte car la pile est déjà vide");
         }
+        $carte = $this->cartes[count($this->cartes)-1];
         array_pop($this->cartes);
+        return $carte;
     }
 
     /**

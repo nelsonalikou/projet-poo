@@ -7,12 +7,8 @@ require_once "Pile.class.php";
 
 require_once "Home.class.php";
 
-$as = new Valeur("a");
-$coeur = new Couleur("coeur");
-$pique = new Couleur("pique");
-
-$asDeCoeur = new Carte($as, $coeur , 1);
-$asDePique = new Carte($as, $pique , 1);
+$asDeCoeur = new Carte("as", "coeur" , 1);
+$asDePique = new Carte("as", "pique" , 1);
 
 $pile = new Pile([$asDeCoeur, $asDePique]);
 
