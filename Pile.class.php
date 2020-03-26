@@ -11,7 +11,7 @@ class Pile{
      * 
      * @param $cartes Liste de cartes
      */
-    public function __construct (string $nomFichier="")
+    public function __construct (string $nomFichier="Cartes_Solitaire")
     {
         $this->$cartes = array();
         if($nomFichier != ""){

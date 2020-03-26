@@ -62,23 +62,23 @@ Class Carte
 
     public function __toString() : string
     {
-        $valeur = $this->valeur->getValeur();
-        $couleur = $this->couleur->getCouleur();
-        if ($couleur == "♦" || $couleur == "♥"){
-            $couleur = "\e[31m".$couleur."\e[0m";
-            $valeur = "\e[31m".$valeur."\e[0m";
-        }else if ($couleur == "♣" || $couleur == "♠"){
-            $couleur = "\e[30m".$couleur."\e[0m";
-            $valeur = "\e[30m".$valeur."\e[0m";
-        }else{
-            $couleur = "\e[32m".$couleur."\e[0m";
-            $valeur = "\e[32m".$valeur."\e[0m";
+        $val = $this->valeur->__toString();
+        if ($couleur == "Carreau" || $couleur == "Coeur"){
+            $res = "\n" ;
+            $res = $res ." \e[47m \e[31;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n";
+            $res = $res ." \e[47m     \e[0m"."\n" ;
+            $res = $res ." \e[47m   {$this->couleur->__tostring()}\e[0m"."\e[47m \e[0m"."\n";
+        }else  {
+            $res = "\n" ;
+            $res = $res ." \e[47m \e[30;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n";
+            $res = $res ." \e[47m     \e[0m"."\n" ;
+            $res = $res ." \e[47m   {$this->couleur->__tostring()}\e[0m"."\e[47m \e[0m"."\n";
         }
-
-        $res = "\n" ;
+        
+        /*$res = "\n" ;
         $res = $res ." \e[47m {$this->valeur->__toString()}\e[0m"."\e[47m   \e[0m"."\n";
         $res = $res ." \e[47m     \e[0m"."\n" ;
-        $res = $res ." \e[47m   {$this->couleur->__tostring()}\e[0m"."\e[47m \e[0m"."\n";
+        $res = $res ." \e[47m   {$this->couleur->__tostring()}\e[0m"."\e[47m \e[0m"."\n";*/
         return $res;
     }
 }
