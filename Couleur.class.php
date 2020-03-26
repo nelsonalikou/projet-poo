@@ -13,11 +13,11 @@ class Couleur
      * Constructeur de la classe Couleur.
      * Affecte à l'attribut $couleur la chaine de caractères mise en paramètre.
      * Si la couleur ne convient pas, le constructeur lance une exception.
-     * 
+     *
      * @param $couleur
      */
 
-    Public function __construct (string $couleur) 
+    Public function __construct (string $couleur)
     {
         $couleurs = ["Pique","Trefle","Carreau","Coeur", "Joker"];
 
@@ -34,24 +34,24 @@ class Couleur
         if ($boucle){
             throw new InvalidArgumentException("Couleur invalide");
         }
-        
+
          $this->couleur = $couleur;
     }
 
     /**
      * L'accesseur de l'attribut $couleur retourne la valeur de cet attribut.
-     * 
+     *
      * @return $couleur
      */
 
     public function getCouleur() : string{
         return $this->couleur;
     }
-    
+
     public function __toString():string{
         $symboles = ["Pique"=>"\e[30;47m♠\e[0m","Trefle"=>"\e[30;47m♣\e[0m","Carreau"=>"\e[31;47m♦\e[0m","Coeur"=>"\e[31;47m♥\e[0m", "Joker"=>"\e[32;47m*\e[0m"];
         return $symboles[$this->couleur];
     }
-    
-    
+
+
 }
