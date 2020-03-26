@@ -7,7 +7,7 @@ class Deck{
 
     public function __construct(Array $cartes)
     {
-        $this->cartes = $cartes
+        $this->cartes = $cartes;
     }
 
     /**
