@@ -2,7 +2,7 @@
 
 require_once("Pile.class.php");
 
-class Pile{
+class Table{
     private $piles; // Pile
 
     /**
@@ -17,7 +17,7 @@ class Pile{
             throw new Excpetion("Nombre de colonnes incorrect");
         }
         for ($i = 0; $i < count($piles); $i++){
-            if (count($piles[$i] != 5)){
+            if ($piles[$i]->getNbCartes() != 5){
                 $n = $i+1;
                 throw new Exception("Nombre de carte incorrect dans la colonne $n");
             }
@@ -50,11 +50,11 @@ class Pile{
         if ($i < 0 || $i >= 5){
             throw new Exception("Indice invalide");
         }
-        if ($this->getNbCarte($i) == 0){
+        if ($this->getNbCartes($i) == 0){
             throw new Exception("La pile est déjà vide");
         }
 
-        $this->pile[$i]->retirerCarte();
+        $this->piles[$i]->retirerCarte();
     }
 
     public function __toString() : string{
