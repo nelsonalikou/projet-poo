@@ -11,7 +11,7 @@ class Valeur{
      */
 
     public function __construct($valeur) {
-        $valeurs = ["A", "V", "D", "R", "J"];
+        $valeurs = ["As", "Valet", "Dame", "Roi", "Joker"];
 
         if (gettype($valeur) == gettype("str")){
             $valeur = ucfirst($valeur);
@@ -25,15 +25,15 @@ class Valeur{
             }
 
             if ($boucle == False){
-                throw new Exception("La valeur n'est pas correcte");
+                throw new InvalidArgumentException("La valeur n'est pas correcte");
             }
         }else{
-            if ($valeur < 2 || $valeur > 10){
-                throw new Exception("La valeur n'est pas correcte");
+            if ((int)$valeur < 2 || (int)$valeur > 10){
+                throw new InvalidArgumentException("La valeur n'est pas correcte");
             }
         }
 
-        $this->valeur = (string) $valeur;
+        $this->valeur = (string)(int)$valeur;
     }
 
     /**
@@ -46,4 +46,10 @@ class Valeur{
     public function getValeur() : string{
         return $this->valeur;
     }
-}
+    
+        public function toString():string{    
+        $symboles = ["As"=>"A", "Valet"=>"V", "Dame"=>"D", "Roi"=>"R", "Joker"=>"\e[32;47m*\e[0m"];
+        return $symboles[$couleur];
+    }
+    
+    }
