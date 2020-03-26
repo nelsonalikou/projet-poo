@@ -21,13 +21,13 @@ Class Carte
     * @param $ordre ordre de la carte
     */
 
-    public function __construct(string $valeur, string $couleur, int $ordre = 0)
+    public function __construct( $valeur, string $couleur, int $ordre = 0)
     {
         $this->valeur = new Valeur($valeur);
         $this->couleur = new Couleur($couleur);
         $this->ordre = $ordre;
 
-        if(!($this->valeur->getValeur()=="Joker" && $this->valeur->getCouleur()=="Joker" || $this->valeur->getValeur()!="Joker" && $this->valeur->getCouleur()!="Joker"))
+        if(!($this->valeur->getValeur()=="Joker" && $this->couleur->getCouleur()=="Joker" || $this->valeur->getValeur()!="Joker" && $this->couleur->getCouleur()!="Joker"))
             throw new InvalidArgumentException ("Carte invalide");
     }
 
