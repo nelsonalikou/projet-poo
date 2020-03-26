@@ -76,9 +76,9 @@ Class Carte
         }
 
         $res = "\n" ;
-        $res = $res ." \e[47m $valeur\e[0m"."\e[47m   \e[0m"."\n";
+        $res = $res ." \e[47m {$this->valeur->__toString()}\e[0m"."\e[47m   \e[0m"."\n";
         $res = $res ." \e[47m     \e[0m"."\n" ;
-        $res = $res ." \e[47m   $couleur\e[0m"."\e[47m \e[0m"."\n";
+        $res = $res ." \e[47m   {$this->couleur->__tostring()}\e[0m"."\e[47m \e[0m"."\n";
         return $res;
     }
 }

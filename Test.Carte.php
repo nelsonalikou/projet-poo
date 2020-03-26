@@ -8,3 +8,10 @@ require_once "Couleur.class.php";
 
 $carte = new Carte(2, "pique" , 2);
 echo $carte;
+echo "\n";
+$val = $carte->getSymboleValeur();
+echo "$val.\n";
+$ordre = $carte->getOrdre();
+echo "$ordre\n";
+$ordre = $carte->getOrdre();
+echo "$ordre\n";
