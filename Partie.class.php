@@ -42,12 +42,12 @@ class Partie{
     public function initialiser() : void{
         $tour = new Tour($this);
         $tour->distribution();
-        $tour->jouer();
+        $gagne = $tour->jouer();
 
-        while ($tour){
+        while ($gagne){
             $this->ajouterTourGagne();
             $tour->distribution();
-            $tour->jouer();
+            $gagne = $tour->jouer();
         }
     }
 

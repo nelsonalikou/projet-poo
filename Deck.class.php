@@ -47,7 +47,7 @@ class Deck{
      */
 
     public function ajouterCarte(Carte $carte) : void{
-        $this->cartes[] = $cartes;
+        $this->cartes[] = $carte;
     }
 
 }

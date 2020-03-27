@@ -102,9 +102,11 @@ class Tour{
      */
 
     public function distribution() : void{
+        
+        var_dump($this->table);
         $tas = new Pile("Cartes_Solitaire.ini");
         $tas->melangerCartes();
-
+        
         $this->setTable($tas);
         $this->setDeck($tas);
         $this->setHome($tas);
@@ -136,7 +138,6 @@ class Tour{
 
     public function jouer() : bool{
         $gagner = True;
-
         while ($this->table->estVide() == False && $gagner){
             echo "Il reste ".$this->deck->getNbCartes()." dans le talon.\n";
 
