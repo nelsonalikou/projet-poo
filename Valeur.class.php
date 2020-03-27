@@ -6,7 +6,7 @@ class Valeur{
      * Constructeur de la classe Valeur.
      * Affecte à l'attribut $valeur la chaine de caractères ou le nombre mit en paramètre.
      * Si le paramètre est invalide, le constructeur lance une excpetion.
-     * 
+     *
      * @param $valeur Valeur à attribuer
      */
 
@@ -39,17 +39,24 @@ class Valeur{
     /**
      * Accesseur de $valeur.
      * Retourne la valeur de l'attribut $valeur.
-     * 
-     * @return $valeur
+     *
+     * @return valeur de la carte
      */
 
     public function getValeur() : string{
         return $this->valeur;
     }
-    
-    public function __toString():string{    
+
+    /**
+     * Fonction d'affichage. Permet de faire un affichage de la valeur de la carte.
+     * Ne prend pas de paramètres
+     *
+     * @return affichage
+     */
+
+    public function __toString():string{
         $symboles = ["2"=>2, "3"=>3, "4"=>4, "5"=>5, "6"=>6, "7"=>7, "8"=>8, "9"=>9, "10"=>10, "As"=>"A", "Valet"=>"V", "Dame"=>"D", "Roi"=>"R", "Joker"=>"\e[32;47m*\e[0m"];
         return $symboles[$this->valeur];
     }
-    
+
 }

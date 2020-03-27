@@ -13,7 +13,7 @@ class Deck{
 
     /**
      * La méthode getNbCartes() retourne le nombre de cartes du deck.
-     * 
+     *
      * @return Nombre de cartes
      */
 
@@ -25,7 +25,7 @@ class Deck{
      * La méthode piocherCarte() enlève la dernière carte du deck et retourne cette carte.
      * Sinon, la méthode lance une exception selon l'erreur commise.
      *
-     * @return $carte
+     * @return carte pioché
      */
 
     public function piocherCarte() : Carte
@@ -42,7 +42,7 @@ class Deck{
 
     /**
      * La méthode ajouterCarte() ajoute la carte renseignée en paramètre à la fin du deck.
-     * 
+     *
      * @param $carte Carte à ajouter
      */
 

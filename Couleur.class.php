@@ -48,6 +48,13 @@ class Couleur
         return $this->couleur;
     }
 
+    /**
+     * Fonction d'affichage. Permet de faire un affichage du symbole et de la couleur.
+     * Ne prend pas de paramètres
+     *
+     * @return affichage
+     */
+
     public function __toString():string{
         $symboles = ["Pique"=>"\e[30;47m♠\e[0m","Trefle"=>"\e[30;47m♣\e[0m","Carreau"=>"\e[31;47m♦\e[0m","Coeur"=>"\e[31;47m♥\e[0m", "Joker"=>"\e[32;47m*\e[0m"];
         return $symboles[$this->couleur];

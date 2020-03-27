@@ -43,22 +43,56 @@ Class Carte
         return $this->ordre;
     }
 
+    /**
+    * Accesseur à l'ordre de la carte.  Retourne l'ordre de la carte parmi toutes les autres
+    * sous forme d'une chaine de caractères.
+    *
+    * @return Symbole de la carte
+    */
 
      public function getSymboleValeur() : string {
         return $this->valeur->__toString();
     }
 
+    /**
+    * Accesseur à l'ordre de la carte.  Retourne l'ordre de la carte parmi toutes les autres
+    * sous forme d'une chaine de caractères.
+    *
+    * @return Couleur_du_symbole de la carte
+    */
+
      public function getSymboleCouleur() : string {
         return $this->couleur->__toString();
     }
+
+    /**
+    * Accesseur à l'ordre de la carte.  Retourne l'ordre de la carte parmi toutes les autres
+    * sous forme d'une chaine de caractères.
+    *
+    * @return Couleur de la carte
+    */
 
      public function getCouleur() : string {
         return $this->couleur->getCouleur();
     }
 
+    /**
+    * Fonction test. Test si la carte est un Joker.
+    *
+    * @return True si la carte est un joker, False sinon
+    */
+
     public function isJoker () : bool{
         return $this->valeur->getValeur()=="Joker";
     }
+
+    /**
+     * Fonction d'affichage. Permet de faire un affichage d'une carte.
+     * Ne prend pas de paramètres
+     *
+     * @return affichage
+     */
+
 
     public function __toString() : string
     {

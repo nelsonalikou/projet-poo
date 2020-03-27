@@ -16,7 +16,7 @@ class Table{
 
     /**
      * La méthode getNbCol() retourne le nombre de colonnes de la pile.
-     * 
+     *
      * @return Nombre de colonnes
      */
 
@@ -26,8 +26,8 @@ class Table{
 
     /**
      * La méthode ajouterColonne() ajoute à l'attribut $piles la pile mise en paramètre si celle-ci à bien 5 cartes.
-     * 
-     * @param $pile Colonne à ajouter
+     *
+     * @param $colonne Colonne à ajouter
      */
 
     public function ajouterColonne(Array $colonne) : void{
@@ -43,7 +43,7 @@ class Table{
 
     /**
      * La méthode getNbCarte() retourne le nombre de cartes de la pile d'indice i, et lance une exception si l'indice n'est pas correct
-     * 
+     *
      * @param $i Indice de la pile
      * @return Nombre de cartes
      */
@@ -58,7 +58,7 @@ class Table{
     /**
      * La méthode retirerCarte() enlève la dernière carte de la pile i si cet indice est correct et si la pile n'est pas déjà vide.
      * Sinon, la méthode lance une exception selon l'erreur commise.
-     * 
+     *
      * @param $i Indice de la pile
      */
 
@@ -75,7 +75,7 @@ class Table{
 
     /**
      * La méthode ajouterCarte() ajoute la carte mise en paramètre dans la pile d'indice i.
-     * 
+     *
      * @param $i Indice de la colonne
      * @param $carte Carte à ajouter
      */
@@ -93,7 +93,7 @@ class Table{
 
     /**
      * La méthode estVide() détermine si toute les colonnes de la table sont vides, et retourne un booléen.
-     * 
+     *
      * @return True si la table est vide, False sinon
      */
 
@@ -112,7 +112,7 @@ class Table{
 
     /**
      * La méthode getDernCarte() retourne la dernière carte de la colonne d'indice i, si cet indice est correct.
-     * 
+     *
      * @param $i Indice de la colonne
      * @return $carte Dernière carte
      */
@@ -124,7 +124,8 @@ class Table{
         return $this->piles[$i][$this->getNbCartes($i)-1];
     }
 
+
     public function __toString() : string{
-        
+
     }
 }

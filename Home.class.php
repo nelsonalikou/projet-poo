@@ -16,28 +16,26 @@ class Home{
      */
 
     public function __construct(){
-        /*if (count($home) != 1){
-            throw new InvalidArgumentException("Le home doit être initialisé avec une seule carte");
-        }
-        $this->home = $home;*/
+
         $this->home = [];
 
     }
 
-
     /**
-     * La méthode ajouterCarte() ajoute la carte mise en paramètre au dessus du home.
-     *
-     * @param $carte
-     */
+    * Accesseur au nombre de cartes. Renvoie le nombre de cartes présente dans le home.
+    *
+    * @return Nombre de cartes
+    */
 
     public function getNbCartes() : int{
         return count($this->home);
     }
 
-    /**
-     * La méthode ajouterCarte() ajoute une carte à la fin de la liste de cartes.
-     */
+     /**
+      * La méthode ajouterCarte() ajoute la carte mise en paramètre au dessus du home.
+      *
+      * @param $carte
+      */
 
     public function ajouterCarte(Carte $carte) : void{
         $this->home[] = $carte;
@@ -45,6 +43,7 @@ class Home{
 
     /**
      * La méthode retirerCarte retire la dernière carte du home si la liste n'est pas vide.
+     *
      */
 
     public function retirerCarte() : void{
@@ -57,7 +56,7 @@ class Home{
     /**
      * La méthode getHome() retourne la dernière carte de la liste.
      *
-     * @return Dernière carte
+     * @return Derniere carte
      */
 
     public function getHome() : Carte{
@@ -91,9 +90,12 @@ class Home{
         return $this->home[($this->getNbCartes())-1];
     }
 
-    /**
-     * foncion d'affichage. Affiche uniquement la carte située au dessus du home.
-     */
+     /**
+      * Fonction d'affichage. Affiche uniquement la carte située au dessus du home.
+      *
+      * @return affichage
+      */
+
     public function __toString() {
         $res = "\n";
         $res= $res."{$this->getCarteH($this->getNbCartes()-1)}";
