@@ -79,13 +79,13 @@ class Tour{
         $colonne6 = [];
         $colonne7 = [];
         for ($i = 0; $i < 5; $i++){
-            $colonne1 = $tas->jouerCarte();
-            $colonne2 = $tas->jouerCarte();
-            $colonne3 = $tas->jouerCarte();
-            $colonne4 = $tas->jouerCarte();
-            $colonne5 = $tas->jouerCarte();
-            $colonne6 = $tas->jouerCarte();
-            $colonne7 = $tas->jouerCarte();
+            $colonne1[] = $tas->jouerCarte();
+            $colonne2[] = $tas->jouerCarte();
+            $colonne3[] = $tas->jouerCarte();
+            $colonne4[] = $tas->jouerCarte();
+            $colonne5[] = $tas->jouerCarte();
+            $colonne6[] = $tas->jouerCarte();
+            $colonne7[] = $tas->jouerCarte();
         }
         $this->table->ajouterColonne($colonne1);
         $this->table->ajouterColonne($colonne2);
