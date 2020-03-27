@@ -11,7 +11,7 @@ class Valeur{
      */
 
     public function __construct($valeur) {
-        $valeurs = ["As", "Valet", "Dame", "Roi", "Joker"];
+        $valeurs = ["As", "Valet", "Reine", "Roi", "Joker"];
 
         if (gettype($valeur) == gettype("str")){
             $valeur = ucfirst($valeur);
@@ -25,7 +25,9 @@ class Valeur{
             }
 
             if ($boucle == False){
-                throw new InvalidArgumentException("La valeur n'est pas correcte");
+                if ((int)$valeur < 2 || (int)$valeur > 10){
+                    throw new InvalidArgumentException("La valeur n'est pas correcte");
+                }
             }
         }else{
             if ((int)$valeur < 2 || (int)$valeur > 10){

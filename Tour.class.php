@@ -54,11 +54,13 @@ class Tour{
     }
 
     /**
-     * La méthode setHome() initialise le home en piochant une carte du deck;
+     * La méthode setHome() initialise le home en prenant une carte du tas.
+     * 
+     * @param $tas
      */
 
-    public function setHome() : void{
-        $carte = $this->deck->piocherCarte();
+    public function setHome(Pile $tas) : void{
+        $carte = $tas->jouerCarte();
         $this->home->ajouterCarte($carte);
     }
 
@@ -105,7 +107,7 @@ class Tour{
 
         $this->setTable($tas);
         $this->setDeck($tas);
-        $this->setHome();
+        $this->setHome($tas);
     }
 
     /**
