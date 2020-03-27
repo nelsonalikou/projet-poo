@@ -99,11 +99,11 @@ class Table{
 
     public function estVide() : bool{
         $i = 0;
-        $boucle = True;
+        $boucle = False;
 
         while ($boucle && $i < 7){
             if ($this->getNbCartes($i) != 0){
-                $boule = False;
+                $boule = True;
             }
             $i++;
         }
@@ -122,7 +122,7 @@ class Table{
             throw new OutOfRangeException("Indice invalide");
         }
 
-        return $this->piles[$i][$this->getNbCartes($i)];
+        return $this->piles[$i][$this->getNbCartes($i)-1];
     }
 
     public function __toString() : string{

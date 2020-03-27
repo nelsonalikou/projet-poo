@@ -102,14 +102,12 @@ class Tour{
      */
 
     public function distribution() : void{
-        
-        var_dump($this->table);
         $tas = new Pile("Cartes_Solitaire.ini");
         $tas->melangerCartes();
         
+        $this->setHome($tas);
         $this->setTable($tas);
         $this->setDeck($tas);
-        $this->setHome($tas);
     }
 
     /**
@@ -138,18 +136,25 @@ class Tour{
 
     public function jouer() : bool{
         $gagner = True;
+
         while ($this->table->estVide() == False && $gagner){
             echo "Il reste ".$this->deck->getNbCartes()." dans le talon.\n";
 
             $nb = readLine("Entrez le numéro de la colonne : ");
             $nb = (int) $nb;
             $nb--;
-            $carteJoue = $this->table->getDernCarte($nb);
-            while ($nb < 1 && $nb > 7 || $this->home->estJouable($carteJoue) != True){
+            while ($nb < 0 || $nb > 7){
                 $nb = readLine("Entrez le numéro de la colonne : ");
                 $nb = (int) $nb;
                 $nb--;
-                $carteJoue = $this->getDernCarte($nb);
+            }
+            
+            $carteJoue = $this->table->getDernCarte($nb);
+            while ($this->home->estJouable($carteJoue) != True){
+                $nb = readLine("Entrez le numéro de la colonne : ");
+                $nb = (int) $nb;
+                $nb--;
+                $carteJoue = $this->table->getDernCarte($nb);
             }
 
             $this->home->ajouterCarte($carteJoue);

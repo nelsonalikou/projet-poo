@@ -28,3 +28,6 @@ $table->ajouterColonne($pile6);
 $table->ajouterColonne($pile7);
 
 echo $table->getNbCartes(0);
+if ($table->estVide() == False){
+    echo "yres";
+}
