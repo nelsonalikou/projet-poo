@@ -73,7 +73,7 @@ class Home{
      */
 
     public function estJouable(Carte $carte) : bool{
-        return $carte->getOrdre() == $this->getHome()->getOrdre()-1 || $carte->getOrdre() == $this->getHome()->getOrdre()+1;
+        return $carte->getOrdre() == $this->getHome()->getOrdre()-1 || $carte->getOrdre() == $this->getHome()->getOrdre()+1 || $carte->isJoker() || $this->getHome()->isJoker();
     }
 
 

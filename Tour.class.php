@@ -111,24 +111,6 @@ class Tour{
     }
 
     /**
-     * La méthode jouerDeck() détermine si le joueur doit jouer le deck, et retourne un booléen.
-     * 
-     * @return $res True si le joueur joue le deck, False sinon
-     */
-
-    public function jouerDeck() : bool{
-        $res = True;
-        $i = 0;
-        while ($i < 7 && $res){
-            if ($this->home->estJouable($this->table->getDernCarte($i)) == True){
-                $res = False;
-            }
-            $i++;
-        }
-        return $res;
-    }
-
-    /**
      * La méthode jouerTour() permet de jouer le tour tant que la joueur n'a pas perdu ou gagné.
      * 
      * @return $gagner True si le joueur gagne le tour, False sinon
@@ -140,8 +122,8 @@ class Tour{
 
         while ($this->table->estVide() == False && $gagner){
             /*echo $this->table;
-            echo $this->deck;
-            echo $this->home;*/
+            echo $this->deck;*/
+            echo $this->home;
 
             switch($this->difficulte){
                 case 1:
@@ -160,44 +142,45 @@ class Tour{
 
             $combo = 1;
             $temps = 180+$temps-time();
-            echo "Il reste ".$this->deck->getNbCartes()." dans le talon.\n";
+            echo "Il reste ".$this->deck->getNbCartes()." cartes dans le talon.\n";
             echo "Bonus temps restant : ".$bonusTemps."\n";
-            echo "Temps restant : ".$temps."\n";
-            $nb = readLine("Entrez le numéro de la colonne : ");
-            $nb = (int) $nb;
-            $nb--;
-            while ($nb < 0 || $nb > 7 || $this->table->getNbCartes($nb) == 0){
-                $nb = readLine("Entrez le numéro de la colonne : ");
-                $nb = (int) $nb;
-                $nb--;
-            }
-            
-            $carteJoue = $this->table->getDernCarte($nb);
-            echo $carteJoue;
+            $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
 
-            /*while ($this->home->estJouable($carteJoue) != True){
-                $nb = readLine("Entrez le numéro de la colonne : ");
-                $nb = (int) $nb;
-                $nb--;
-                $carteJoue = $this->table->getDernCarte($nb);
-            }*/
-
-            $this->home->ajouterCarte($carteJoue);
-            $this->table->retirerCarte($nb);
-
-            $this->partie->ajouterScore($score*$combo);
-            $combo++;
-    
-            $jouerDeck = $this->jouerDeck();
-            if ($jouerDeck){
+            if ((string)$nb == "d"){
                 if ($this->deck->getNbCartes() == 0){
                     $gagner = False;
+                    return $gagner;
                 }else{
                     $carte = $this->deck->piocherCarte();
                     $this->home->ajouterCarte($carte);
                     $combo = 1;
                 }
+            }else{
+                $nb = (int) $nb;
+                $nb--;
+
+                while ($nb < 0 || $nb > 7 || $this->table->getNbCartes($nb) == 0){
+                    $nb = readLine("Numéro de colonne incorrect : ");
+                    $nb = (int) $nb;
+                    $nb--;
+                }
+                
+                $carteJoue = $this->table->getDernCarte($nb);
+
+                while ($this->home->estJouable($carteJoue) != True || $nb < 0 || $nb > 7){
+                    $nb = readLine("Numéro de colonne incorrect : ");
+                    $nb = (int) $nb;
+                    $nb--;
+                    $carteJoue = $this->table->getDernCarte($nb);
+                }
+
+                $this->home->ajouterCarte($carteJoue);
+                $this->table->retirerCarte($nb);
+
+                $this->partie->ajouterScore($score*$combo);
+                $combo++;
             }
+
         }
         return $gagner;
     }

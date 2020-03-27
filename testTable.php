@@ -27,8 +27,7 @@ $table->ajouterColonne($pile5);
 $table->ajouterColonne($pile6);
 $table->ajouterColonne($pile7);
 
-var_dump($table);
-$table->retirerCarte(6);
-var_dump($table);
-
-echo $table->getNbCol();
+echo $table->getDernCarte(0);
+echo $table->getDernCarte(1);
+echo $table->getDernCarte(2);
+echo $table->getDernCarte(3);

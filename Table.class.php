@@ -121,7 +121,6 @@ class Table{
         if ($i < 0 || $i > 7 || $this->getNbCartes($i) == 0){
             throw new OutOfRangeException("Indice invalide");
         }
-
         return $this->piles[$i][$this->getNbCartes($i)-1];
     }
 
