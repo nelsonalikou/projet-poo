@@ -34,6 +34,10 @@ class Home{
         return count($this->home);
     }
 
+    /**
+     * La méthode ajouterCarte() ajoute une carte à la fin de la liste de cartes.
+     */
+
     public function ajouterCarte(Carte $carte) : void{
         $this->home[] = $carte;
     }
@@ -47,6 +51,26 @@ class Home{
             throw new OutOfRangeException("Le liste est deja vide");
         }
         $this->home = array_pop($this->home);
+    }
+
+    /**
+     * La méthode getHome() retourne la dernière carte de la liste.
+     * 
+     * @return Dernière carte
+     */
+
+    public function getHome() : Carte{
+        return $this->home[$this->getNbCartes()];
+    }
+
+    /**
+     * La méthode estJouable() détermine si la carte mise en paramètre est jouable avec le home actuel.
+     * 
+     * @return True si la carte est jouable, False sinon
+     */
+
+    public function estJouable(Carte $carte) : bool{
+        return $carte->getOrdre() == $this->getHome()->getOrdre()-1 || $carte->getOrdre() == $this->getHome()->getOrdre()+1;
     }
 
 }
