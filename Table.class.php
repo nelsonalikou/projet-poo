@@ -70,7 +70,7 @@ class Table{
             throw new Exception("La pile est déjà vide");
         }
 
-        $this->piles[$i]->retirerCarte();
+        $this->piles[$i] = array_pop($this->piles[$i]);
     }
 
     /**

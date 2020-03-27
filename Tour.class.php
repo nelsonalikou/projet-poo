@@ -136,28 +136,57 @@ class Tour{
 
     public function jouer() : bool{
         $gagner = True;
+        $temps = time();
 
         while ($this->table->estVide() == False && $gagner){
-            echo "Il reste ".$this->deck->getNbCartes()." dans le talon.\n";
+            /*echo $this->table;
+            echo $this->deck;
+            echo $this->home;*/
 
+            switch($this->difficulte){
+                case 1:
+                    $score = 20;
+                    $bonusTemps = 400;
+                break;
+                case 2:
+                    $score = 40;
+                    $bonusTemps = 400;
+                break;
+                case 3:
+                    $score = 60;
+                    $bonusTemps = 1250;
+                break;
+            }
+
+            $combo = 1;
+            $temps = 180+$temps-time();
+            echo "Il reste ".$this->deck->getNbCartes()." dans le talon.\n";
+            echo "Bonus temps restant : ".$bonusTemps."\n";
+            echo "Temps restant : ".$temps."\n";
             $nb = readLine("Entrez le numéro de la colonne : ");
             $nb = (int) $nb;
             $nb--;
-            while ($nb < 0 || $nb > 7){
+            while ($nb < 0 || $nb > 7 || $this->table->getNbCartes($nb) == 0){
                 $nb = readLine("Entrez le numéro de la colonne : ");
                 $nb = (int) $nb;
                 $nb--;
             }
             
             $carteJoue = $this->table->getDernCarte($nb);
-            while ($this->home->estJouable($carteJoue) != True){
+            echo $carteJoue;
+
+            /*while ($this->home->estJouable($carteJoue) != True){
                 $nb = readLine("Entrez le numéro de la colonne : ");
                 $nb = (int) $nb;
                 $nb--;
                 $carteJoue = $this->table->getDernCarte($nb);
-            }
+            }*/
 
             $this->home->ajouterCarte($carteJoue);
+            $this->table->retirerCarte($nb);
+
+            $this->partie->ajouterScore($score*$combo);
+            $combo++;
     
             $jouerDeck = $this->jouerDeck();
             if ($jouerDeck){
@@ -166,6 +195,7 @@ class Tour{
                 }else{
                     $carte = $this->deck->piocherCarte();
                     $this->home->ajouterCarte($carte);
+                    $combo = 1;
                 }
             }
         }

@@ -27,7 +27,8 @@ $table->ajouterColonne($pile5);
 $table->ajouterColonne($pile6);
 $table->ajouterColonne($pile7);
 
-echo $table->getNbCartes(0);
-if ($table->estVide() == False){
-    echo "yres";
-}
+var_dump($table);
+$table->retirerCarte(6);
+var_dump($table);
+
+echo $table->getNbCol();

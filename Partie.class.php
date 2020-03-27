@@ -45,10 +45,13 @@ class Partie{
         $gagne = $tour->jouer();
 
         while ($gagne){
+            $this->ajouterScore(1000);
             $this->ajouterTourGagne();
             $tour->distribution();
             $gagne = $tour->jouer();
         }
+
+        echo "Votre score final : ".$this->score;
     }
 
     public function sauvegarder() : void{
