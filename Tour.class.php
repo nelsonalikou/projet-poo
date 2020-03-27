@@ -100,7 +100,7 @@ class Tour{
      */
 
     public function distribution() : void{
-        $tas = new Pile("NOM DU FICHIER ICI");
+        $tas = new Pile("Cartes_Solitaire.ini");
         $tas->melangerCartes();
 
         $this->setTable($tas);

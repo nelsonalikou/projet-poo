@@ -10,7 +10,7 @@ class Table{
      * Constructeur de la classe Pile. Ce constructeur affecte à l'attribut $piles une liste vide.
      */
 
-    public function __construct(Array $piles){
+    public function __construct(){
         $this->piles = [];
     }
 
