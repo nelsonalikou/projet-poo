@@ -55,18 +55,6 @@ class Home{
     }
 
     /**
-     * La méthode getHome() retourne la dernière carte de la liste.
-     * 
-     * @return Dernière carte
-     */
-
-    public function getHome() : Carte{
-
-        return $this->home[($this->getNbCartes())-1];
-
-    }
-
-    /**
      * La méthode estJouable() détermine si la carte mise en paramètre est jouable avec le home actuel.
      * 
      * @return True si la carte est jouable, False sinon
@@ -85,7 +73,7 @@ class Home{
      */
 
     public function getCarteH() : Carte{
-        if ($i >= $this->getNbCartes() || $i < 0){
+        if ( $this->getNbCartes() == 0){
             throw new OutOfBoundsException("Pas de cartes dans le home");
         }
         return $this->home[($this->getNbCartes())-1];

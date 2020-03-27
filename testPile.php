@@ -27,16 +27,23 @@ echo $pile->getNbCartes();*/
 
 $Home = new Home();
 $Home->ajouterCarte($pile->getCarte(0));
+$Home->ajouterCarte($pile->getCarte(1));
 
 Var_dump($Home);
-echo "$Home\n";
+#echo "$Home\n";
 $last = $Home->getCarteH(0);
-echo "$last\n";
+#echo "$last\n";
 /*echo "\n";
 echo "$pile";
 echo "\n";
 
  $carte1=$pile->getCarte(0) ;
  echo "$carte1\n";*/
+
+
+ 
+ $aff = $pile->printSideBySide2($pile->getCarte(0),$pile->getCarte(1));
+ echo "$aff\n";
+
 
 

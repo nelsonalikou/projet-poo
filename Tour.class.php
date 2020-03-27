@@ -150,7 +150,7 @@ class Tour{
                 break;
                 case 2:
                     $score = 40;
-                    $bonusTemps = 400;
+                    $bonusTemps = 750;
                 break;
                 case 3:
                     $score = 60;

@@ -57,7 +57,7 @@ Class Carte
     }
 
     public function isJoker () : bool{
-        return $this->valeur->getValeur()=="Joker";
+        return $this->valeur->getValeur()=="Jocker";
     }
 
     public function __toString() : string
@@ -76,11 +76,11 @@ Class Carte
             $res = $res ." \e[47m   $coul\e[0m"."\e[47m \e[0m"."\n";
         }else {
         $res = "\n" ;
-        $res = $res ." \e[47m \e[32;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n";
+        $res = $res ." \e[47m \e[32;47m$val\e[0m\e[0m"."\e[47m   \e[0m"."\n"; 
         $res = $res ." \e[47m     \e[0m"."\n" ;
         $res = $res ." \e[47m   $coul\e[0m"."\e[47m \e[0m"."\n";
     }
-
+        
         /*$res = "\n" ;
         $res = $res ." \e[47m {$this->valeur->__toString()}\e[0m"."\e[47m   \e[0m"."\n";
         $res = $res ." \e[47m     \e[0m"."\n" ;
