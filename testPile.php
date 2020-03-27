@@ -40,6 +40,7 @@ echo "\n";
  $carte1=$pile->getCarte(0) ;
  echo "$carte1\n";*/
 
+<<<<<<< HEAD
 
  
  $aff = $pile->printSideBySide2($pile->getCarte(0),$pile->getCarte(1));
@@ -47,3 +48,7 @@ echo "\n";
 
 
 
+=======
+ $testRet = $pile->carteRetourne($asDeCoeur);
+ echo "$testRet\n";
+>>>>>>> c848d8ffde6ed37227528bf38883bb5baccb7acc

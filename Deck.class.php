@@ -34,10 +34,10 @@ class Deck{
             throw new Exception("Le deck est vide");
         }
 
-        $carte = $this->cartes[$this->getNbCartes()];
+        $carte = $this->cartes[$this->getNbCartes()-1];
         $this->cartes = array_pop($this->cartes);
 
-        return $cartes;
+        return $carte;
     }
 
     /**
