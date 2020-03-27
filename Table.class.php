@@ -34,11 +34,11 @@ class Table{
         if (count($colonne) != 5){
             throw new Exception("Nombre de carte incorrect");
         }
-        if ($this->getNbCol() > 7){
+        if ($this->getNbCol() == 7){
             throw new Exception("La table est deja complète");
         }
 
-        $this->piles[] = $pile;
+        $this->piles[] = $colonne;
     }
 
     /**
@@ -49,7 +49,7 @@ class Table{
      */
 
     public function getNbCartes(int $i) : int{
-        if ($i < 0 || $i >= 5){
+        if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
         return count($this->piles[$i]);
@@ -70,7 +70,7 @@ class Table{
             throw new Exception("La pile est déjà vide");
         }
 
-        $this->piles[$i]->retirerCarte();
+        $this->piles[$i] = array_pop($this->piles[$i]);
     }
 
     /**
@@ -99,12 +99,13 @@ class Table{
 
     public function estVide() : bool{
         $i = 0;
-        $boucle = True;
+        $boucle = False;
 
         while ($boucle && $i < 7){
-            if ($this->piles[$i]->getNbCartes() != 0){
-                $boule = False;
+            if ($this->getNbCartes($i) != 0){
+                $boule = True;
             }
+            $i++;
         }
         return $boucle;
     }
@@ -121,7 +122,7 @@ class Table{
             throw new OutOfRangeException("Indice invalide");
         }
 
-        return $this->piles[$i][$this->getNbCartes($i)];
+        return $this->piles[$i][$this->getNbCartes($i)-1];
     }
 
     public function __toString() : string{

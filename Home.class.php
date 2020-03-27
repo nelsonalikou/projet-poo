@@ -61,7 +61,9 @@ class Home{
      */
 
     public function getHome() : Carte{
+
         return $this->home[($this->getNbCartes())-1];
+
     }
 
     /**

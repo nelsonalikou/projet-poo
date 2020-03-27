@@ -42,13 +42,16 @@ class Partie{
     public function initialiser() : void{
         $tour = new Tour($this);
         $tour->distribution();
-        $tour->jouer();
+        $gagne = $tour->jouer();
 
-        while ($tour){
+        while ($gagne){
+            $this->ajouterScore(1000);
             $this->ajouterTourGagne();
             $tour->distribution();
-            $tour->jouer();
+            $gagne = $tour->jouer();
         }
+
+        echo "Votre score final : ".$this->score;
     }
 
     public function sauvegarder() : void{
