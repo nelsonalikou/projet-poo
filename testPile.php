@@ -12,8 +12,8 @@ $asDePique = new Carte("as", "pique" , 1);
 
 $pile = new Pile("Cartes_Solitaire.ini");
 $pile->melangerCartes();
-var_dump($pile);
-echo $pile->getNbCartes();
+/*var_dump($pile);*/
+#echo $pile->getNbCartes();
 
 /*echo $pile->getNbCartes();
 echo $pile->getCarte(0);
@@ -23,9 +23,20 @@ $pile->retirerCarte();
 echo $pile->getNbCartes()."\n";
 
 $pile->ajouterCarte($asDePique);
-echo $pile->getNbCartes();
+echo $pile->getNbCartes();*/
 
-$Home = new Home($pile);
+$Home = new Home();
+$Home->ajouterCarte($pile->getCarte(0));
 
-Var_dump($Home);*/
+Var_dump($Home);
+echo "$Home\n";
+$last = $Home->getCarteH(0);
+echo "$last\n";
+/*echo "\n";
+echo "$pile";
+echo "\n";
+
+ $carte1=$pile->getCarte(0) ;
+ echo "$carte1\n";*/
+
 

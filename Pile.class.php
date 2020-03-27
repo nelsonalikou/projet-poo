@@ -86,4 +86,15 @@ class Pile{
     public function ajouterCarte(Carte $carte) : void{
         $this->cartes[] = $carte;
     }
+
+    public function __toString() {
+        $res = "\n";
+        for ($j=0; $j < $this->getNbCartes(); $j++){
+            $res = $res."\n";
+            $res= $res."{$this->getCarte($j)}";
+            $res= $res."\n"; 
+            }
+        return $res;  
+        
+    }
 }

@@ -3,9 +3,10 @@
 require_once("Pile.class.php");
 require_once("Deck.class.php");
 require_once("Table.class.php");
+require_once("Carte.class.php");
 
 class Home{
-    private $home; // Array
+    private $home; // Array de cartes
 
     /**
      * Constructeur de la classe Home.
@@ -60,7 +61,7 @@ class Home{
      */
 
     public function getHome() : Carte{
-        return $this->home[$this->getNbCartes()];
+        return $this->home[($this->getNbCartes())-1];
     }
 
     /**
@@ -71,6 +72,32 @@ class Home{
 
     public function estJouable(Carte $carte) : bool{
         return $carte->getOrdre() == $this->getHome()->getOrdre()-1 || $carte->getOrdre() == $this->getHome()->getOrdre()+1;
+    }
+
+
+
+     /**
+     * La méthode getCarteH() retourne la carte située au dessus du home, si pas de carte dans le home, la méthode lance une excpetion.
+     * 
+     * @return Carte au dessus du home
+     */
+
+    public function getCarteH() : Carte{
+        if ($i >= $this->getNbCartes() || $i < 0){
+            throw new OutOfBoundsException("Pas de cartes dans le home");
+        }
+        return $this->home[($this->getNbCartes())-1];
+    }
+
+    /**
+     * foncion d'affichage. Affiche uniquement la carte située au dessus du home. 
+     */
+    public function __toString() {
+        $res = "\n";
+        $res= $res."{$this->getCarteH($this->getNbCartes()-1)}";
+        $res= $res."\n"; 
+            
+        return $res;  
     }
 
 }
