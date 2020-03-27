@@ -54,6 +54,7 @@ class Home{
     }
 
     /**
+
      * La méthode getHome() retourne la dernière carte de la liste.
      *
      * @return Derniere carte
@@ -84,7 +85,7 @@ class Home{
      */
 
     public function getCarteH() : Carte{
-        if ($this->getNbCartes() == 0){
+        if ( $this->getNbCartes() == 0){
             throw new OutOfBoundsException("Pas de cartes dans le home");
         }
         return $this->home[($this->getNbCartes())-1];

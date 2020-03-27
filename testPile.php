@@ -27,11 +27,12 @@ echo $pile->getNbCartes();*/
 
 $Home = new Home();
 $Home->ajouterCarte($pile->getCarte(0));
+$Home->ajouterCarte($pile->getCarte(1));
 
 Var_dump($Home);
-echo "$Home\n";
+#echo "$Home\n";
 $last = $Home->getCarteH(0);
-echo "$last\n";
+#echo "$last\n";
 /*echo "\n";
 echo "$pile";
 echo "\n";
@@ -39,5 +40,15 @@ echo "\n";
  $carte1=$pile->getCarte(0) ;
  echo "$carte1\n";*/
 
+<<<<<<< HEAD
+
+ 
+ $aff = $pile->printSideBySide2($pile->getCarte(0),$pile->getCarte(1));
+ echo "$aff\n";
+
+
+
+=======
  $testRet = $pile->carteRetourne($asDeCoeur);
  echo "$testRet\n";
+>>>>>>> c848d8ffde6ed37227528bf38883bb5baccb7acc
