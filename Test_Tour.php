@@ -19,4 +19,4 @@ $Table = $pile->getTable();
 var_dump($Table);
 echo "\n";
 
-$pile->afficherTable();
+$pile->afficherTour();

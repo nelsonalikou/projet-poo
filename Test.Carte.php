@@ -36,7 +36,7 @@ echo "$coul\n";
 $ordre = $carte3->getOrdre();
 echo "$ordre\n";
 
-$carte4 = new Carte("2", "pique" , 2);
+$carte4 = new Carte("10", "pique" , 10);
 echo $carte4;
 echo "\n";
 $val = $carte4->getSymboleValeur();
