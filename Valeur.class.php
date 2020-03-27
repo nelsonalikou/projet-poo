@@ -52,4 +52,4 @@ class Valeur{
         return $symboles[$this->valeur];
     }
     
-    }
+}

@@ -10,7 +10,7 @@ class Table{
      * Constructeur de la classe Pile. Ce constructeur affecte à l'attribut $piles une liste vide.
      */
 
-    public function __construct(Array $piles){
+    public function __construct(){
         $this->piles = [];
     }
 
@@ -52,7 +52,7 @@ class Table{
         if ($i < 0 || $i >= 5){
             throw new Exception("Indice invalide");
         }
-        return $this->piles[$i]->getNbCartes();
+        return count($this->piles[$i]);
     }
 
     /**
@@ -89,6 +89,39 @@ class Table{
         }
 
         $this->piles[$i]->ajouterCarte($carte);
+    }
+
+    /**
+     * La méthode estVide() détermine si toute les colonnes de la table sont vides, et retourne un booléen.
+     * 
+     * @return True si la table est vide, False sinon
+     */
+
+    public function estVide() : bool{
+        $i = 0;
+        $boucle = True;
+
+        while ($boucle && $i < 7){
+            if ($this->piles[$i]->getNbCartes() != 0){
+                $boule = False;
+            }
+        }
+        return $boucle;
+    }
+
+    /**
+     * La méthode getDernCarte() retourne la dernière carte de la colonne d'indice i, si cet indice est correct.
+     * 
+     * @param $i Indice de la colonne
+     * @return $carte Dernière carte
+     */
+
+    public function getDernCarte(int $i) : Carte{
+        if ($i < 0 || $i > 7 || $this->getNbCartes($i) == 0){
+            throw new OutOfRangeException("Indice invalide");
+        }
+
+        return $this->piles[$i][$this->getNbCartes($i)];
     }
 
     public function __toString() : string{

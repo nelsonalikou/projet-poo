@@ -11,7 +11,9 @@ $asDeCoeur = new Carte("as", "coeur" , 1);
 $asDePique = new Carte("as", "pique" , 1);
 
 $pile = new Pile("Cartes_Solitaire.ini");
+$pile->melangerCartes();
 var_dump($pile);
+echo $pile->getNbCartes();
 
 /*echo $pile->getNbCartes();
 echo $pile->getCarte(0);
