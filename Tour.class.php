@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(Partie $partie){
+    public function __construct(/*Partie $partie*/){
         $this->deck = new Deck();
         $this->home = new Home();
-        $this->partie = $partie;
+     #   $this->partie = $partie;
         $this->table = new Table();
-        $this->difficulte = $partie->getDifficulte();
+      #  $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -142,12 +142,12 @@ class Tour{
 
             $combo = 1;
             $temps = 180+$temps-time();
-            echo "Il reste ".$this->deck->getNbCartes()." cartes dans le talon.\n";
+            echo "Il reste ".$this->deck->getNbCartesD()." cartes dans le talon.\n";
             echo "Bonus temps restant : ".$bonusTemps."\n";
             $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
 
             if ((string)$nb == "d"){
-                if ($this->deck->getNbCartes() == 0){
+                if ($this->deck->getNbCartesD() == 0){
                     $gagner = False;
                     return $gagner;
                 }else{
@@ -184,4 +184,37 @@ class Tour{
         }
         return $gagner;
     }
+
+
+   /* public function afficher() : void {
+        for ($i=0; $i<$this->getNbCartes();$i++){
+
+        }
+    }*/
+
+
+    public function getHome() : Home{
+        return $this->home;
+    }
+    public function getDeck() : Deck{
+        return $this->deck;
+    }
+    public function getTable() : Table{
+        return $this->table;
+    }
+
+
+
+    public function afficherTable() : void{
+        for ($j=0;$j<5;$j++){
+            #for ($i=0;$i<$this->table->getNbCol();$i++){
+                printf( "%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s\n","{$this->table->getCarteTable($i,0)->getSymboleValeur()}"," ", "{$this->table->getCarteTable($i,1)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,2)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,3)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,4)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,5)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,6)->getSymboleValeur()}");  #getSymboleCouleur  getSymboleValeur
+            #}
+            echo "\n"."\n";
+        }
+
+    } 
 }
+
+
+#Rapport technique à faire

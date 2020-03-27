@@ -48,7 +48,7 @@ class Valeur{
     }
     
     public function __toString():string{    
-        $symboles = ["2"=>2, "3"=>3, "4"=>4, "5"=>5, "6"=>6, "7"=>7, "8"=>8, "9"=>9, "10"=>10, "As"=>"A", "Valet"=>"V", "Dame"=>"D", "Roi"=>"R", "Joker"=>"\e[32;47m*\e[0m"];
+        $symboles = ["2"=>2, "3"=>3, "4"=>4, "5"=>5, "6"=>6, "7"=>7, "8"=>8, "9"=>9, "10"=>10, "As"=>"A", "Valet"=>"V", "Dame"=>"D", "Roi"=>"R", "Joker"=>"*"];
         return $symboles[$this->valeur];
     }
     

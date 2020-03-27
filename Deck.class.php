@@ -12,12 +12,12 @@ class Deck{
     }
 
     /**
-     * La méthode getNbCartes() retourne le nombre de cartes du deck.
+     * La méthode getNbCartesD() retourne le nombre de cartes du deck.
      * 
      * @return Nombre de cartes
      */
 
-    public function getNbCartes() : int{
+    public function getNbCartesD() : int{
         return count($this->cartes);
     }
 
@@ -34,7 +34,7 @@ class Deck{
             throw new Exception("Le deck est vide");
         }
 
-        $carte = $this->cartes[$this->getNbCartes()-1];
+        $carte = $this->cartes[$this->getNbCartesD()-1];
         $this->cartes = array_pop($this->cartes);
 
         return $carte;
@@ -49,5 +49,7 @@ class Deck{
     public function ajouterCarte(Carte $carte) : void{
         $this->cartes[] = $carte;
     }
+
+    
 
 }

@@ -31,7 +31,7 @@ class Home{
      * @param $carte
      */
 
-    public function getNbCartes() : int{
+    public function getNbCartesH() : int{
         return count($this->home);
     }
 
@@ -63,7 +63,7 @@ class Home{
 
     public function getHome() : Carte{
 
-        return $this->home[($this->getNbCartes())-1];
+        return $this->home[($this->getNbCartesH())-1];
 
     }
 
@@ -86,10 +86,10 @@ class Home{
      */
 
     public function getCarteH() : Carte{
-        if ( $this->getNbCartes() == 0){
+        if ( $this->getNbCartesH() == 0){
             throw new OutOfBoundsException("Pas de cartes dans le home");
         }
-        return $this->home[($this->getNbCartes())-1];
+        return $this->home[($this->getNbCartesH())-1];
     }
 
     /**
@@ -97,7 +97,7 @@ class Home{
      */
     public function __toString() {
         $res = "\n";
-        $res= $res."{$this->getCarteH($this->getNbCartes()-1)}";
+        $res= $res."{$this->getCarteH($this->getNbCartesH()-1)}";
         $res= $res."\n";
 
         return $res;

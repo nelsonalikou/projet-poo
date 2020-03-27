@@ -48,7 +48,7 @@ class Table{
      * @return Nombre de cartes
      */
 
-    public function getNbCartes(int $i) : int{
+    public function getNbCartesT(int $i) : int{
         if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
@@ -66,7 +66,7 @@ class Table{
         if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
-        if ($this->getNbCartes($i) == 0){
+        if ($this->getNbCartesT($i) == 0){
             throw new Exception("La pile est déjà vide");
         }
 
@@ -84,7 +84,7 @@ class Table{
         if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
-        if ($this->getNbCartes($i) == 0){
+        if ($this->getNbCartesT($i) == 0){
             throw new Exception("La pile est déjà vide");
         }
 
@@ -102,7 +102,7 @@ class Table{
         $boucle = False;
 
         while ($boucle && $i < 7){
-            if ($this->getNbCartes($i) != 0){
+            if ($this->getNbCartesT($i) != 0){
                 $boule = True;
             }
             $i++;
@@ -118,13 +118,20 @@ class Table{
      */
 
     public function getDernCarte(int $i) : Carte{
-        if ($i < 0 || $i > 7 || $this->getNbCartes($i) == 0){
+        if ($i < 0 || $i > 7 || $this->getNbCartesT($i) == 0){
             throw new OutOfRangeException("Indice invalide");
         }
-        return $this->piles[$i][$this->getNbCartes($i)-1];
+        return $this->piles[$i][$this->getNbCartesT($i)-1];
     }
 
     public function __toString() : string{
         
+    }
+
+    public function getCarteTable(int $Lig, int $Col) : Carte{
+        if ($Col >= $this->getNbCartesT($Lig) || $Col < 0){
+            throw new OutOfBoundsException("Indice invalide");
+        }
+        return $this->piles[$Lig][$Col];
     }
 }
