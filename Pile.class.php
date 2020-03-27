@@ -23,11 +23,11 @@ class Pile{
             {
                 foreach ($fichier as $couleur => $cartes)
                     foreach ($cartes as $valeur => $ordre)
-                        $this->$cartes[] = new Carte((string)$valeur, (string)$couleur, (int)$ordre);
-                $this->$cartes[] = new Carte("Joker", "Joker",14);
-                $this->$cartes[] = new Carte("Joker", "Joker",14);
-                $this->$cartes[] = new Carte("Joker", "Joker",14);
-                $this->$cartes[] = new Carte("Joker", "Joker",14);
+                        $this->cartes[] = new Carte((string)$valeur, (string)$couleur, (int)$ordre);
+                $this->cartes[] = new Carte("Joker", "Joker",14);
+                $this->cartes[] = new Carte("Joker", "Joker",14);
+                $this->cartes[] = new Carte("Joker", "Joker",14);
+                $this->cartes[] = new Carte("Joker", "Joker",14);
             }
         }
     }

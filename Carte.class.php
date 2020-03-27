@@ -21,7 +21,7 @@ Class Carte
     * @param $ordre ordre de la carte
     */
 
-    public function __construct( $valeur, string $couleur, int $ordre = 0)
+    public function __construct(string $valeur, string $couleur, int $ordre = 0)
     {
         $this->valeur = new Valeur($valeur);
         $this->couleur = new Couleur($couleur);
