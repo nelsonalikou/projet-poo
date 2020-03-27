@@ -11,10 +11,10 @@ class Home{
     /**
      * Constructeur de la classe Home.
      * Attribut à l'attribut home la liste de carte mise en paramètre contenant une carte.
-     * 
+     *
      * @param $home Liste contenant une seule carte
      */
-    
+
     public function __construct(){
         /*if (count($home) != 1){
             throw new InvalidArgumentException("Le home doit être initialisé avec une seule carte");
@@ -24,10 +24,10 @@ class Home{
 
     }
 
-    
+
     /**
      * La méthode ajouterCarte() ajoute la carte mise en paramètre au dessus du home.
-     * 
+     *
      * @param $carte
      */
 
@@ -56,7 +56,7 @@ class Home{
 
     /**
      * La méthode getHome() retourne la dernière carte de la liste.
-     * 
+     *
      * @return Dernière carte
      */
 
@@ -68,7 +68,7 @@ class Home{
 
     /**
      * La méthode estJouable() détermine si la carte mise en paramètre est jouable avec le home actuel.
-     * 
+     *
      * @return True si la carte est jouable, False sinon
      */
 
@@ -80,26 +80,26 @@ class Home{
 
      /**
      * La méthode getCarteH() retourne la carte située au dessus du home, si pas de carte dans le home, la méthode lance une excpetion.
-     * 
+     *
      * @return Carte au dessus du home
      */
 
     public function getCarteH() : Carte{
-        if ($i >= $this->getNbCartes() || $i < 0){
+        if ($this->getNbCartes() == 0){
             throw new OutOfBoundsException("Pas de cartes dans le home");
         }
         return $this->home[($this->getNbCartes())-1];
     }
 
     /**
-     * foncion d'affichage. Affiche uniquement la carte située au dessus du home. 
+     * foncion d'affichage. Affiche uniquement la carte située au dessus du home.
      */
     public function __toString() {
         $res = "\n";
         $res= $res."{$this->getCarteH($this->getNbCartes()-1)}";
-        $res= $res."\n"; 
-            
-        return $res;  
+        $res= $res."\n";
+
+        return $res;
     }
 
 }

@@ -8,7 +8,7 @@ class Pile{
     /**
      * Constructeur de la classe Pile.
      * Affecte à l'attribut $cartes la liste de cartes mise en paramètre.
-     * 
+     *
      * @param $cartes Liste de cartes
      */
     public function __construct (string $nomFichier="")
@@ -16,7 +16,7 @@ class Pile{
         $this->cartes = array();
         if($nomFichier != ""){
             $fichier = parse_ini_file($nomFichier, true, INI_SCANNER_TYPED) ;
-            
+
             if ($fichier === false)
                 die('Erreur de lecture') ;
             else
@@ -35,10 +35,10 @@ class Pile{
     public function melangerCartes() : void{
         shuffle($this->cartes);
     }
-    
+
     /**
      * La méthode getNbCartes() retourne le nombre de cartes dans la pile.
-     * 
+     *
      * @return Nombre de cartes
      */
 
@@ -48,7 +48,7 @@ class Pile{
 
     /**
      * La méthode getCarte() retourne la carte d'indice $i, si l'indice est invalide la méthode lance une excpetion.
-     * 
+     *
      * @param $i Indice de la carte
      * @return Carte d'indice $i
      */
@@ -60,7 +60,7 @@ class Pile{
         return $this->cartes[$i];
     }
 
-    
+
     public function estVide() : bool {
         return count($this->cartes)==0;
     }
@@ -79,7 +79,7 @@ class Pile{
 
     /**
      * La méthode ajouterCarte() ajoute la carte mise en paramètre à la fin de la pile.
-     * 
+     *
      * @param $carte
      */
 
@@ -87,14 +87,22 @@ class Pile{
         $this->cartes[] = $carte;
     }
 
+    public function carteRetourne(Carte $carte) : string {
+      $res = "\n" ;
+      $res = $res ." \e[47m     \e[0m"."\n";
+      $res = $res ." \e[47m     \e[0m"."\n" ;
+      $res = $res ." \e[47m     \e[0m"."\n";
+      return $res;
+    }
+
     public function __toString() {
         $res = "\n";
         for ($j=0; $j < $this->getNbCartes(); $j++){
             $res = $res."\n";
             $res= $res."{$this->getCarte($j)}";
-            $res= $res."\n"; 
+            $res= $res."\n";
             }
-        return $res;  
-        
+        return $res;
+
     }
 }

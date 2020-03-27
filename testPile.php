@@ -39,4 +39,5 @@ echo "\n";
  $carte1=$pile->getCarte(0) ;
  echo "$carte1\n";*/
 
-
+ $testRet = $pile->carteRetourne($asDeCoeur);
+ echo "$testRet\n";
