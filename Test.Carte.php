@@ -41,7 +41,7 @@ echo $carte4;
 echo "\n";
 $val = $carte4->getSymboleValeur();
 echo "$val.\n";
-$coul = $carte4->getSymboleCouleur();
+$coul = $carte4->getCouleur();
 echo "$coul\n";
 $ordre = $carte4->getOrdre();
 echo "$ordre\n";

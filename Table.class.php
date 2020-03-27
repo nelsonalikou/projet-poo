@@ -135,4 +135,9 @@ class Table{
         }
         return $this->piles[$Lig][$Col];
     }
+
+
+    public function getNbCartesCol(int $Col) : int{
+        return count($this->piles[$Col]);
+    }
 }

@@ -206,11 +206,35 @@ class Tour{
 
 
     public function afficherTable() : void{
-        for ($j=0;$j<5;$j++){
-            #for ($i=0;$i<$this->table->getNbCol();$i++){
-                printf( "%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s\n","{$this->table->getCarteTable($i,0)->getSymboleValeur()}"," ", "{$this->table->getCarteTable($i,1)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,2)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,3)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,4)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,5)->getSymboleValeur()}"," ","{$this->table->getCarteTable($i,6)->getSymboleValeur()}");  #getSymboleCouleur  getSymboleValeur
-            #}
+        $numCol = 0;
+        for ($j=0;$j<$this->table->getNbCartesCol($numCol);$j++){
+            for ($i=0;$i<$this->table->getNbCol();$i++){
+               # printf( "%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s\n"," \e[47m {$this->table->getCarteTable(0,$j)->getSymboleValeur()}\e[0m"," ", "{$this->table->getCarteTable(1,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(2,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(3,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(4,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(5,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(6,$j)->getSymboleValeur()}");  #getSymboleCouleur  getSymboleValeur
+                $coul = $this->table->getCarteTable($i,$j)->getCouleur();
+                $val = $this->table->getCarteTable(0,$j)->getSymboleValeur();
+                if ($coul=="Pique" || $coul == "Trefle"){
+                    print(" \e[47m \e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
+                    print("          ");
+    
+                }
+                else if ($coul=="Coeur" || $coul == "Pique"){
+                    print(" \e[47m \e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
+                    print("          ");
+                }
+                else {
+                    print(" \e[47m \e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
+                    print("          ");
+                }
+                
+               
+            }
+            print(" \e[47m     \e[0m");
             echo "\n"."\n";
+            /*echo "\n";
+            
+            print("          ");*/
+               # print(" \e[47m   $val\e[0m"."\e[47m \e[0m");
+            $numCol++;
         }
 
     } 
