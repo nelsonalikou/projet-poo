@@ -32,6 +32,11 @@ class Pile{
         }
     }
 
+    /**
+     * La méthode melangerCartes() permet de melanger les cartes.
+     *
+     */
+
     public function melangerCartes() : void{
         shuffle($this->cartes);
     }
@@ -60,12 +65,19 @@ class Pile{
         return $this->cartes[$i];
     }
 
+    /**
+     * La méthode estVide() permet savoir si la pile vide.
+     *
+     * @return True si la pile est vide, sinon False.
+     */
 
     public function estVide() : bool {
         return count($this->cartes)==0;
     }
     /**
      * La méthode retirerCarte() retire la dernière carte de la pile si celle-ci n'est pas vide, et lance une exception sinon.
+     *
+     * @return Carte qui à été jouer.
      */
 
     public function jouerCarte() : Carte{
@@ -87,6 +99,13 @@ class Pile{
         $this->cartes[] = $carte;
     }
 
+    /**
+     * La méthode carteRetourne() un affichage de la carte retourné.
+     *
+     * @param $carte Carte à retourner
+     * @return affichage
+     */
+
     public function carteRetourne(Carte $carte) : string {
       $res = "\n" ;
       $res = $res ." \e[47m     \e[0m"."\n";
@@ -94,6 +113,13 @@ class Pile{
       $res = $res ." \e[47m     \e[0m"."\n";
       return $res;
     }
+
+    /**
+     * Fonction d'affichage. Permet de faire un affichage
+     * des cartes présente dans la pile.
+     *
+     * @return affichage
+     */
 
     public function __toString() {
         $res = "\n";

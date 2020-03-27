@@ -9,7 +9,7 @@ class Partie{
 
     /**
      * Le constructeur de la classe Partie affecte la valeur mise en paramètre à l'attribut difficulté, et 0 aux autres attributs
-     * 
+     *
      * @param $diff Difficulté
      */
 
@@ -19,25 +19,58 @@ class Partie{
         $this->nbTourGagne = 0;
     }
 
+    /**
+    * Accesseur au score. Retourne le score.
+    *
+    * @return score de la partie
+    */
+
     public function getScore() : int{
         return $this->score;
     }
+
+    /**
+    * La méthode getNbCartes(). Ajoute un score au score principal.
+    *
+    */
 
     public function ajouterScore(int $score){
         $this->score += $score;
     }
 
+    /**
+    * Accesseur à la difficultée de la partie.  Retourne la difficultée de la partie.
+    *
+    * @return difficulte de la partie
+    */
+
     public function getDifficulte() : int{
         return $this->difficulte;
     }
+
+    /**
+    * Accesseur au nombre de tour gagné. Retourne le nombre de tour gagné.
+    *
+    * @return Tour gagné
+    */
 
     public function getNbTourGagne() : int{
         return $this->nbTourGagne;
     }
 
+    /**
+    * La méthode ajouterTourGagne(). Ajoute une victoire au total de tour gagné.
+    *
+    */
+
     public function ajouterTourGagne(){
         $this->nbTourGagne+=1;
     }
+
+    /**
+    * La fonction initialiser(). Initialise la partie.
+    *
+    */
 
     public function initialiser() : void{
         $tour = new Tour($this);

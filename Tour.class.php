@@ -17,7 +17,7 @@ class Tour{
     /**
      * Le constructeur de la classe Tour affecte aux attributs deck, home et table des listes vides. L'attribut partie prend pour valeur
      * l'objet en paramètre et difficulte prend pour valeur celle de l'attribut difficulte de l'objet de la classe Partie.
-     * 
+     *
      * @param $partie
      */
 
@@ -32,7 +32,7 @@ class Tour{
     /**
      * Méthode getDifficulte().
      * Retourne la valeur de la difficulté
-     * 
+     *
      * @return $difficulte
      */
 
@@ -42,7 +42,7 @@ class Tour{
 
     /**
      * La méthode setDeck() initialise le deck en fonction du tas de carte en paramètre.
-     * 
+     *
      * @param $tas Tas de carte
      */
 
@@ -55,7 +55,7 @@ class Tour{
 
     /**
      * La méthode setHome() initialise le home en prenant une carte du tas.
-     * 
+     *
      * @param $tas
      */
 
@@ -66,7 +66,7 @@ class Tour{
 
     /**
      * La méthode setTable() initialise la table en fonction du tas de carte en paramètre.
-     * 
+     *
      * @param $tas Tas de carte
      */
 
@@ -104,7 +104,7 @@ class Tour{
     public function distribution() : void{
         $tas = new Pile("Cartes_Solitaire.ini");
         $tas->melangerCartes();
-        
+
         $this->setHome($tas);
         $this->setTable($tas);
         $this->setDeck($tas);
@@ -112,8 +112,8 @@ class Tour{
 
     /**
      * La méthode jouerTour() permet de jouer le tour tant que la joueur n'a pas perdu ou gagné.
-     * 
-     * @return $gagner True si le joueur gagne le tour, False sinon
+     *
+     * @return True si le joueur gagne le tour, False sinon
      */
 
     public function jouer() : bool{
@@ -164,7 +164,7 @@ class Tour{
                     $nb = (int) $nb;
                     $nb--;
                 }
-                
+
                 $carteJoue = $this->table->getDernCarte($nb);
 
                 while ($this->home->estJouable($carteJoue) != True || $nb < 0 || $nb > 7){
