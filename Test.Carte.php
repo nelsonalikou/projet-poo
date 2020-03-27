@@ -6,7 +6,7 @@ require_once "Carte.class.php";
 require_once "Valeur.class.php";
 require_once "Couleur.class.php";
 
-$carte1 = new Carte(2, "carreau" , 2);
+$carte1 = new Carte("2", "carreau" , 2);
 echo $carte1;
 echo "\n";
 $val = $carte1->getSymboleValeur();
@@ -16,7 +16,7 @@ echo "$coul\n";
 $ordre = $carte1->getOrdre();
 echo "$ordre\n";
 
-$carte2 = new Carte(2, "Coeur" , 2);
+$carte2 = new Carte("2", "Coeur" , 2);
 echo $carte2;
 echo "\n";
 $val = $carte2->getSymboleValeur();
@@ -26,7 +26,7 @@ echo "$coul\n";
 $ordre = $carte2->getOrdre();
 echo "$ordre\n";
 
-$carte3 = new Carte(2, "trefle" , 2);
+$carte3 = new Carte("2", "trefle" , 2);
 echo $carte3;
 echo "\n";
 $val = $carte3->getSymboleValeur();
@@ -36,7 +36,7 @@ echo "$coul\n";
 $ordre = $carte3->getOrdre();
 echo "$ordre\n";
 
-$carte4 = new Carte(2, "pique" , 2);
+$carte4 = new Carte("2", "pique" , 2);
 echo $carte4;
 echo "\n";
 $val = $carte4->getSymboleValeur();
