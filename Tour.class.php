@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(/*Partie $partie*/){
+    public function __construct(Partie $partie){
         $this->deck = new Deck();
         $this->home = new Home();
-     #   $this->partie = $partie;
+        $this->partie = $partie;
         $this->table = new Table();
-      #  $this->difficulte = $partie->getDifficulte();
+        $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -118,32 +118,23 @@ class Tour{
 
     public function jouer() : bool{
         $gagner = True;
-        $temps = time();
 
         while ($this->table->estVide() == False && $gagner){
-            /*echo $this->table;
-            echo $this->deck;*/
-            echo $this->home;   # Ewan ici je te conseille  echo "$this->home";  plutôt
+            $this->afficherTour();
 
             switch($this->difficulte){
                 case 1:
                     $score = 20;
-                    $bonusTemps = 400;
                 break;
                 case 2:
                     $score = 40;
-                    $bonusTemps = 750;
                 break;
                 case 3:
                     $score = 60;
-                    $bonusTemps = 1250;
                 break;
             }
 
             $combo = 1;
-            $temps = 180+$temps-time();
-            echo "Il reste ".$this->deck->getNbCartesD()." cartes dans le talon.\n";
-            echo "Bonus temps restant : ".$bonusTemps."\n";
             $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
 
             if ((string)$nb == "d"){
@@ -159,7 +150,7 @@ class Tour{
                 $nb = (int) $nb;
                 $nb--;
 
-                while ($nb < 0 || $nb > 7 || $this->table->getNbCartes($nb) == 0){
+                while ($nb < 0 || $nb > 7 || $this->table->getNbCartesT($nb) == 0){
                     $nb = readLine("Numéro de colonne incorrect : ");
                     $nb = (int) $nb;
                     $nb--;
@@ -184,8 +175,6 @@ class Tour{
         }
         return $gagner;
     }
-
-
 
     public function getHome() : Home{
         return $this->home;
