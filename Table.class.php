@@ -13,7 +13,7 @@ class Table{
     public function __construct(){
         $this->piles = [];
         for ($i = 0 ; $i < 7 ; $i++)
-            $this->piles = new Pile;
+            $this->piles[] = new Pile;
     }
 
 
@@ -57,7 +57,6 @@ class Table{
         if ($j < 0 || $j >=  7){
             throw new OutOfBoundsException("La table est deja complète");
         }
-
         $this->piles[$j]->ajouterCarte($carte); // attention, il peut y avoir transfert d'exception
     }
 
@@ -72,7 +71,7 @@ class Table{
         $boucle = True;
 
         while ($boucle && $i < 7){
-            $boucle = $this->piles()->estVide();
+            $boucle = $this->piles[$i]->estVide();
             $i++;
         }
         return $boucle;
@@ -85,11 +84,11 @@ class Table{
      * @return $carte Dernière carte
      */
 
-    public function voirCarte(int $i) :Carte {
+    public function voirCarte(int $i, int $j) :Carte {
         if ($i < 0 || $i >= 7){
             throw new OutOfBoundsException("Indice invalide");
         }
-        return $this->piles[$i]->getCarte($this->getNbCartesColonne($i)-1);
+        return $this->piles[$i]->getCarte($j);
     }
     
 

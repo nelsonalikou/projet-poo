@@ -9,25 +9,6 @@ require_once "Table.class.php";
 $asDeCoeur = new Carte("as", "coeur" , 1);
 $asDePique = new Carte("as", "pique" , 1);
 
-$pile1 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile2 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile3 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile4 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile5 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile6 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-$pile7 = [$asDeCoeur, $asDePique, $asDePique, $asDePique, $asDePique];
-
 $table = new Table();
 
-$table->ajouterColonne($pile1);
-$table->ajouterColonne($pile2);
-$table->ajouterColonne($pile3);
-$table->ajouterColonne($pile4);
-$table->ajouterColonne($pile5);
-$table->ajouterColonne($pile6);
-$table->ajouterColonne($pile7);
-
-echo $table->getDernCarte(0);
-echo $table->getDernCarte(1);
-echo $table->getDernCarte(2);
-echo $table->getDernCarte(3);
+$table->ajouterCarte(0, $asDeCoeur);
