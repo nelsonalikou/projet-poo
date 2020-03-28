@@ -69,7 +69,7 @@ class Table{
         if ($this->getNbCartesT($i) == 0){
             throw new Exception("La pile est déjà vide");
         }
-        array_splice($this->piles,(count($this->piles[$i]) - 1));
+        array_splice($this->piles[$i],(count($this->piles[$i]) - 1));
     }
 
     /**
