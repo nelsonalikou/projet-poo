@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(Partie $partie){
+    public function __construct(/*Partie $partie*/){
         $this->deck = new Deck();
         $this->home = new Home();
         $this->partie = $partie;
         $this->table = new Table();
-        $this->difficulte = $partie->getDifficulte();
+      #  $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -175,13 +175,22 @@ class Tour{
         $numCol = 0; # compteur du numero de colonne de la Table
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
         $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
-        $TabBlanc = [];
+        $TabBlanc = []; # création d'un tableau 2D pour stocker les blancs
+
         for ($j=0;$j< $this->table->getNbCartesColonne($numCol);$j++){
             $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
             $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
-            $tabBlanc = [];
+            $tabBlanc = []; # initialisation d'une colonne pour le  $tabBlanc
             for ($i=0;$i<7;$i++){
-             
+                if ($this->table->getNbCartesColonne($i) < 5){
+                    $nbCartes = $this->table->getNbCartesColonne($i);
+                    while ($nbCartes < 5){
+                        $TabLigne[] = "     "; 
+                        $TabCol[] = "     "; 
+                        $tabBlanc[] = "     ";
+                    } 
+                }
+                else{
               #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
                 $val = $this->table->voirCarte($i,$j)->getSymboleCouleur();
                 $Valeur = $this->table->voirCarte($i,$j)->getValeur();
@@ -220,7 +229,7 @@ class Tour{
                 $tabBlanc[] = " \e[47m     \e[0m";
             }
 
-               
+        } 
             
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
@@ -272,7 +281,7 @@ class Tour{
 public function delColonne() : void{
     $nb = readLine("Entrez le numéro de la colonne entre 1 et 7 (ou 'd' pour piocher) : ");
     $nb = (int) $nb;
-    $this->table->retirerCarte($nb-1);
+    $this->table->jouerCarte($nb-1);
    
 }
 

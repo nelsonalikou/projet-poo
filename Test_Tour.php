@@ -1,6 +1,7 @@
 <?php
 
 require_once "Tour.class.php";
+require_once "Partie.class.php";
 
 
 $pile = new Tour();
