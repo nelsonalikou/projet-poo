@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(/*Partie $partie*/){
+    public function __construct(Partie $partie){
         $this->deck = new Deck();
         $this->home = new Home();
         $this->partie = $partie;
         $this->table = new Table();
-      #  $this->difficulte = $partie->getDifficulte();
+        $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -172,70 +172,78 @@ class Tour{
 
 
     public function afficherTour() : void{
-        $numCol = 0; # compteur du numero de colonne de la Table
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
         $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
-        $TabBlanc = []; # création d'un tableau 2D pour stocker les blancs
+        $TabBlanc = [];
 
-        for ($j=0;$j< $this->table->getNbCartesColonne($numCol);$j++){
+        $tailleMax = 0;
+        for ($i = 0; $i < 7; $i++){
+            if ($tailleMax < $this->table->getNbCartesColonne($i)){
+                $tailleMax = $this->table->getNbCartesColonne($i);
+            }
+        }
+
+        for ($j=0;$j < $tailleMax; $j++){
             $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
             $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
             $tabBlanc = []; # initialisation d'une colonne pour le  $tabBlanc
             for ($i=0;$i<7;$i++){
-                if ($this->table->getNbCartesColonne($i) < 5){
-                    $nbCartes = $this->table->getNbCartesColonne($i);
-                    while ($nbCartes < 5){
-                        $TabLigne[] = "     "; 
-                        $TabCol[] = "     "; 
-                        $tabBlanc[] = "     ";
-                    } 
-                }
-                else{
               #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
-                $val = $this->table->voirCarte($i,$j)->getSymboleCouleur();
-                $Valeur = $this->table->voirCarte($i,$j)->getValeur();
 
-                if (/*$coul=="Pique" || $coul == "Trefle"*/ $val == "\e[30;47m♠\e[0m" || $val == "\e[30;47m♣\e[0m"){
-                    if ($Valeur == 10){
-                        $res = " \e[47m\e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                    else{
-                        $res = " \e[47m \e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                  
-                }
+                echo "Taille de la col : ".$this->table->getNbCartesColonne($i)."\n";
+                echo "taille Max : ".$tailleMax."\n";
+                if ($this->table->getNbCartesColonne($i) < $tailleMax && $j >= $this->table->getNbCartesColonne($i)){
 
-                else if (/*$coul=="Coeur" || $coul == "Pique"*/  $val == "\e[31;47m♦\e[0m" || $val == "\e[31;47m♥\e[0m"){
+                    $TabLigne[] = " \e[40m     \e[0m";
+                    $TabCol[] = " \e[40m     \e[0m";
+                    $tabBlanc[] = " \e[40m     \e[0m";
+
+                }else{
+                    $val = $this->table->voirCarte($i,$j)->getSymboleCouleur();
+                    $Valeur = $this->table->voirCarte($i,$j)->getValeur();
+
+                    if (/*$coul=="Pique" || $coul == "Trefle"*/ $val == "\e[30;47m♠\e[0m" || $val == "\e[30;47m♣\e[0m"){
+                        if ($Valeur == 10){
+                            $res = " \e[47m\e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                        else{
+                            $res = " \e[47m \e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                    
+                    }
+
+                    else if (/*$coul=="Coeur" || $coul == "Pique"*/  $val == "\e[31;47m♦\e[0m" || $val == "\e[31;47m♥\e[0m"){
+                    
+                        if ($Valeur == 10){
+                            $res = " \e[47m\e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                        else{
+                            $res = " \e[47m \e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                    
+                    }
+                    else {
+                        if ($Valeur == 10){
+                            $res = " \e[47m\e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                        else{
+                            $res = " \e[47m \e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        }
+                    }
                 
-                    if ($Valeur == 10){
-                        $res = " \e[47m\e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                    else{
-                        $res = " \e[47m \e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                   
+                    $TabLigne[] = $res;
+                    $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
+                    $tabBlanc[] = " \e[47m     \e[0m";
                 }
-                else {
-                    if ($Valeur == 10){
-                        $res = " \e[47m\e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                    else{
-                        $res = " \e[47m \e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
-                    }
-                }
-            
-                $TabLigne[] = $res;
-                $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
-                $tabBlanc[] = " \e[47m     \e[0m";
+
+                
             }
 
-        } 
+        
             
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
             $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
-
-            $numCol++;
         }
 
     # complete le tableau avec des chaines vides si la carte est absente 

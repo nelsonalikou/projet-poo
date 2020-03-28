@@ -59,7 +59,6 @@ class Pile{
      */
 
     public function getCarte(int $i) : Carte{
-        echo "Taille : ".$this->getNbCartes()."\n";
         if ($i >= $this->getNbCartes() || $i < 0){
             throw new OutOfBoundsException("Indice invalide");
         }
