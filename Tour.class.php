@@ -123,7 +123,7 @@ class Tour{
         while ($this->table->estVide() == False && $gagner){
             /*echo $this->table;
             echo $this->deck;*/
-            echo $this->home;
+            echo $this->home;   # Ewan ici je te conseille  echo "$this->home";  plutôt
 
             switch($this->difficulte){
                 case 1:
@@ -186,12 +186,6 @@ class Tour{
     }
 
 
-   /* public function afficher() : void {
-        for ($i=0; $i<$this->getNbCartes();$i++){
-
-        }
-    }*/
-
 
     public function getHome() : Home{
         return $this->home;
@@ -206,41 +200,39 @@ class Tour{
 
 
     public function afficherTour() : void{
-        $numCol = 0;
-        $TabCouleur = [];
-        $TabValeur = [];
+        $numCol = 0; # compteur du numero de colonne de la Table
+        $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
+        $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
         for ($j=0;$j<$this->table->getNbCartesCol($numCol);$j++){
-            $TabLigne = [];
-            $TabCol = [];
+            $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
+            $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
             for ($i=0;$i<$this->table->getNbCol();$i++){
-               # printf( "%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s%10s%9s\n"," \e[47m {$this->table->getCarteTable(0,$j)->getSymboleValeur()}\e[0m"," ", "{$this->table->getCarteTable(1,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(2,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(3,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(4,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(5,$j)->getSymboleValeur()}"," ","{$this->table->getCarteTable(6,$j)->getSymboleValeur()}");  #getSymboleCouleur  getSymboleValeur
+             
                 $coul = $this->table->getCarteTable($i,$j)->getCouleur();
                 $val = $this->table->getCarteTable($i,$j)->getSymboleCouleur();
                 $Valeur = $this->table->getCarteTable($i,$j)->getValeur();
-                if ($coul=="Pique" || $coul == "Trefle"){
-                    # print(" \e[47m \e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
+
+                if (/*$coul=="Pique" || $coul == "Trefle"*/ $val == "\e[30;47m♠\e[0m" || $val == "\e[30;47m♣\e[0m"){
                     if ($Valeur == 10){
                         $res = " \e[47m\e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                     else{
                         $res = " \e[47m \e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
-                    #print("          ");
-    
+                  
                 }
-                else if ($coul=="Coeur" || $coul == "Pique"){
-                    #print(" \e[47m \e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
+
+                else if (/*$coul=="Coeur" || $coul == "Pique"*/  $val == "\e[31;47m♦\e[0m" || $val == "\e[31;47m♥\e[0m"){
+                
                     if ($Valeur == 10){
                         $res = " \e[47m\e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                     else{
                         $res = " \e[47m \e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
-                    #print("          ");
+                   
                 }
                 else {
-                    #print(" \e[47m \e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m");
-                    #print("          ");
                     if ($Valeur == 10){
                         $res = " \e[47m\e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
@@ -253,24 +245,21 @@ class Tour{
 
                
             }
-            $TabCouleur[] = $TabLigne;
-            $TabValeur[] = $TabCol;
-            #print(" \e[47m     \e[0m");
-            #echo "\n"."\n";
-            /*echo "\n";
-            
-            print("          ");*/
-               # print(" \e[47m   $val\e[0m"."\e[47m \e[0m");
+            $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
+            $TabValeur[] = $TabCol; #ajout de la colonne initialisée
+
             $numCol++;
         }
-
+/*Récuperation du tableau  2D des symboles couleurs et symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
         for ($a=0;$a<$this->table->getNbCartesCol($numCol);$a++){
-            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]);  #getSymboleCouleur  getSymboleValeur
+            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]); 
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n"," \e[47m     \e[0m"," ", " \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m");
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]); 
             print("\n");
-        } 
-        echo "$this->home\n";
+            
+        }
+        printf( "%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s\n","1"," ", "2"," ","3"," ","4"," ","5"," ","6"," ","7"); #affihage des numeros de colonnes
+        echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
         print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
     } 
 }

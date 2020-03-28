@@ -12,13 +12,8 @@ class Deck{
     }
 
     /**
-<<<<<<< HEAD
      * La méthode getNbCartesD() retourne le nombre de cartes du deck.
      * 
-=======
-     * La méthode getNbCartes() retourne le nombre de cartes du deck.
-     *
->>>>>>> d066f4555693e212801ba08da27462eb75879323
      * @return Nombre de cartes
      */
 
