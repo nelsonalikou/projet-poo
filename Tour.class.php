@@ -280,7 +280,7 @@ class Tour{
          
 
 /*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
-        for ($a=0;$a<5;$a++){
+        for ($a=0;$a<$tailleMax;$a++){
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]); 
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabBlanc[$a][0]," ", $TabBlanc[$a][1]," ",$TabBlanc[$a][2]," ",$TabBlanc[$a][3]," ",$TabBlanc[$a][4]," ",$TabBlanc[$a][5]," ",$TabBlanc[$a][6]);
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]); 
