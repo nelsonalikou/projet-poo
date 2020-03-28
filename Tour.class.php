@@ -245,18 +245,30 @@ class Tour{
         }
 
     # complete le tableau avec des chaines vides si la carte est absente 
-        for ($lig = 0;$lig < 5; $lig++ ){
-            for ($col = 7; $col < 7; $col++){
-                if  (in_array($Tabcouleur[$lig][$col],$TabCouleur)==true){
+        $TabTaille = [];
+        for ($lig = 0; $lig < 7; $lig++ ){
+            $TabTaille[] = $this->table->getNbCartesT($lig);
+
+            if ($TabTaille[$lig] < 5){
+                while (count($this->table->getNbCartesT($lig))<5){
+                    $Tabcouleur[$lig] = "";
+                    $TabValeur[$lig] = "";
+                    $TabBlanc[$lig] = "";
+                }
+            }
+        }
+         echo $TabTaille."\n";
+        /*    for ($col = 7; $col < 7; $col++){
+                if  (in_array($Tabcouleur[$col][$lig],$TabCouleur)==true){
                     null;
                 }
                 else{
-                    $Tabcouleur[$lig][$col] = "";
-                    $TabValeur[$lig][$col] = "";
-                    $TabBlanc[$lig][$col] = "";
+                    $Tabcouleur[$col][$lig] = "";
+                    $TabValeur[$col][$lig] = "";
+                    $TabBlanc[$col][$lig] = "";
                 }
-            }
-        } 
+            }*/
+         
 
 /*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
         for ($a=0;$a<5;$a++){
