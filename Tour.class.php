@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(/*Partie $partie*/){
+    public function __construct(Partie $partie){
         $this->deck = new Deck();
         $this->home = new Home();
         $this->partie = $partie;
         $this->table = new Table();
-        $this->difficulte =/* $partie->getD*/$difficulte;
+        $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -71,29 +71,12 @@ class Tour{
      */
 
     public function setTable(Pile $tas) : void{
-        $colonne1 = [];
-        $colonne2 = [];
-        $colonne3 = [];
-        $colonne4 = [];
-        $colonne5 = [];
-        $colonne6 = [];
-        $colonne7 = [];
         for ($i = 0; $i < 5; $i++){
-            $colonne1[] = $tas->jouerCarte();
-            $colonne2[] = $tas->jouerCarte();
-            $colonne3[] = $tas->jouerCarte();
-            $colonne4[] = $tas->jouerCarte();
-            $colonne5[] = $tas->jouerCarte();
-            $colonne6[] = $tas->jouerCarte();
-            $colonne7[] = $tas->jouerCarte();
+            for ($j = 0; $j < 7; $j++){
+                $carte = $tas->jouerCarte();
+                $this->table->ajouterCarte($j, $carte);
+            }
         }
-        $this->table->ajouterColonne($colonne1);
-        $this->table->ajouterColonne($colonne2);
-        $this->table->ajouterColonne($colonne3);
-        $this->table->ajouterColonne($colonne4);
-        $this->table->ajouterColonne($colonne5);
-        $this->table->ajouterColonne($colonne6);
-        $this->table->ajouterColonne($colonne7);
     }
 
     /**
@@ -106,8 +89,8 @@ class Tour{
         $tas->melangerCartes();
 
         $this->setHome($tas);
-        $this->setTable($tas);
         $this->setDeck($tas);
+        $this->setTable($tas);
     }
 
     /**
@@ -168,7 +151,7 @@ class Tour{
                 $this->home->ajouterCarte($carteJoue);
                 $this->table->retirerCarte($nb);
 
-                $this->partie->ajouterScore($score*$combo);
+                //$this->partie->ajouterScore($score*$combo);
                 $combo++;
             }
 
@@ -193,28 +176,22 @@ class Tour{
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
         $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
         $TabBlanc = [];
-        for ($j=0;$j< $this->table->getNbCartesT($numCol);$j++){
+        for ($j=0;$j< $this->table->getNbCartesColonne($numCol);$j++){
             $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
             $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
             $tabBlanc = [];
-            for ($i=0;$i<$this->table->getNbCol();$i++){
+            for ($i=0;$i<7;$i++){
              
               #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
-              $nb
-                if ($this->table->getNbCartesT($j)<5){
-
-
-                }
-                else{
-                $val = $this->table->getCarteTable($i,$j)->getSymboleCouleur();
-                $Valeur = $this->table->getCarteTable($i,$j)->getValeur();
+                $val = $this->table->voirCarte($i,$j)->getSymboleCouleur();
+                $Valeur = $this->table->voirCarte($i,$j)->getValeur();
 
                 if (/*$coul=="Pique" || $coul == "Trefle"*/ $val == "\e[30;47m♠\e[0m" || $val == "\e[30;47m♣\e[0m"){
                     if ($Valeur == 10){
-                        $res = " \e[47m\e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m\e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                     else{
-                        $res = " \e[47m \e[30;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m \e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                   
                 }
@@ -222,19 +199,19 @@ class Tour{
                 else if (/*$coul=="Coeur" || $coul == "Pique"*/  $val == "\e[31;47m♦\e[0m" || $val == "\e[31;47m♥\e[0m"){
                 
                     if ($Valeur == 10){
-                        $res = " \e[47m\e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m\e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                     else{
-                        $res = " \e[47m \e[31;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m \e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                    
                 }
                 else {
                     if ($Valeur == 10){
-                        $res = " \e[47m\e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m\e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                     else{
-                        $res = " \e[47m \e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
+                        $res = " \e[47m \e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                 }
             
@@ -244,7 +221,7 @@ class Tour{
             }
 
                
-            }
+            
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
             $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
@@ -255,20 +232,16 @@ class Tour{
     # complete le tableau avec des chaines vides si la carte est absente 
       /*  $TabTaille = [];
         for ($lig = 0; $lig < 7; $lig++ ){
-            $TabTaille[] = $this->table->getNbCartesT($lig);
+            $TabTaille[] = $this->table->getNbCartesColonne($lig);
 
             if ($TabTaille[$lig] < 5){
-                $nbLig = $TabTaille[$lig];
-                while ($nbLig < 5){
-                    $Tabcouleur[$lig][$nbLig] = "   ";
-                    $TabValeur[$lig][$nbLig] = "   ";
-                    $TabBlanc[$lig][$nbLig] = "   ";
-                    $nbLig++;
+                while (count($this->table->getNbCartesColonne($lig))<5){
+                    $Tabcouleur[$lig] = "";
+                    $TabValeur[$lig] = "";
+                    $TabBlanc[$lig] = "";
                 }
             }
         }
-        $k = $TabTaille[0];
-         echo "$k"."\n";*/
         /*    for ($col = 7; $col < 7; $col++){
                 if  (in_array($Tabcouleur[$col][$lig],$TabCouleur)==true){
                     null;
@@ -291,8 +264,7 @@ class Tour{
         }
         printf( "%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s\n","1"," ", "2"," ","3"," ","4"," ","5"," ","6"," ","7"); #affihage des numeros de colonnes
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
-        printf("%9s",$TabCouleur[0][0]);
-        print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
+        print("Il reste {$this->deck->getNbCartes()} cartes dans le Talon"."\n");
     } 
 
 

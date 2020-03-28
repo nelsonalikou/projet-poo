@@ -82,7 +82,7 @@ class Pile{
 
     public function jouerCarte() : Carte{
         if ($this->getNbCartes() == 0){
-            throw new Exception("Impossible de supprimer une carte car la pile est déjà vide");
+            throw new OutOfBoundsException("Impossible de supprimer une carte car la pile est déjà vide");
         }
         $carte = $this->cartes[count($this->cartes)-1];
         array_pop($this->cartes);
@@ -133,6 +133,10 @@ class Pile{
     }
 
 
+
+}
+
+
     function printSideBySide( Carte  $C1,  Carte  $C2) : void{
         $n = 0;
         while ($n < ($this->getNbCartes()-1)){
@@ -156,4 +160,3 @@ class Pile{
         print($C1->getCouleur()."   ".$C2->getCouleur());
        # print($this->getCarte($indiceC2));
     }
-}

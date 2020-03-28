@@ -4,7 +4,7 @@ require_once("Pile.class.php");
 require_once("Carte.class.php");
 
 class Table{
-    private $piles; // Array
+    private $piles; // Array de Pile
 
     /**
      * Constructeur de la classe Pile. Ce constructeur affecte à l'attribut $piles une liste vide.
@@ -12,34 +12,10 @@ class Table{
 
     public function __construct(){
         $this->piles = [];
+        for ($i = 0 ; $i < 7 ; $i++)
+            $this->piles[] = new Pile;
     }
 
-    /**
-     * La méthode getNbCol() retourne le nombre de colonnes de la pile.
-     *
-     * @return Nombre de colonnes
-     */
-
-    public function getNbCol() : int{
-        return count($this->piles);
-    }
-
-    /**
-     * La méthode ajouterColonne() ajoute à l'attribut $piles la pile mise en paramètre si celle-ci à bien 5 cartes.
-     *
-     * @param $colonne Colonne à ajouter
-     */
-
-    public function ajouterColonne(Array $colonne) : void{
-        if (count($colonne) != 5){
-            throw new Exception("Nombre de carte incorrect");
-        }
-        if ($this->getNbCol() == 7){
-            throw new Exception("La table est deja complète");
-        }
-
-        $this->piles[] = $colonne;
-    }
 
     /**
      * La méthode getNbCarte() retourne le nombre de cartes de la pile d'indice i, et lance une exception si l'indice n'est pas correct
@@ -48,11 +24,11 @@ class Table{
      * @return Nombre de cartes
      */
 
-    public function getNbCartesT(int $i) : int{
+    public function getNbCartesColonne(int $i) : int{
         if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
-        return count($this->piles[$i]);
+        return $this->piles[$i]->getNbCartes();
     }
 
     /**
@@ -62,14 +38,11 @@ class Table{
      * @param $i Indice de la pile
      */
 
-    public function retirerCarte(int $i) :void {
+    public function jouerCarte(int $i) :Carte {
         if ($i < 0 || $i >= 7){
-            throw new Exception("Indice invalide");
+            throw new OutOfBoundsException("Indice invalide");
         }
-        if ($this->getNbCartesT($i) == 0){
-            throw new Exception("La pile est déjà vide");
-        }
-        array_splice($this->piles[$i],(count($this->piles[$i]) - 1));
+        return $this->piles[$i]->jouerCarte();
     }
 
     /**
@@ -79,15 +52,12 @@ class Table{
      * @param $carte Carte à ajouter
      */
 
-    public function ajouterCarte(int $i, Carte $carte) : void{
-        if ($i < 0 || $i >= 7){
-            throw new Exception("Indice invalide");
+    public function ajouterCarte(int $j , Carte $carte) : void{
+        
+        if ($j < 0 || $j >=  7){
+            throw new OutOfBoundsException("La table est deja complète");
         }
-        if ($this->getNbCartesT($i) == 0){
-            throw new Exception("La pile est déjà vide");
-        }
-
-        $this->piles[$i]->ajouterCarte($carte);
+        $this->piles[$j]->ajouterCarte($carte); // attention, il peut y avoir transfert d'exception
     }
 
     /**
@@ -98,12 +68,10 @@ class Table{
 
     public function estVide() : bool{
         $i = 0;
-        $boucle = False;
+        $boucle = True;
 
         while ($boucle && $i < 7){
-            if ($this->getNbCartesT($i) != 0){
-                $boule = True;
-            }
+            $boucle = $this->piles[$i]->estVide();
             $i++;
         }
         return $boucle;
@@ -116,18 +84,12 @@ class Table{
      * @return $carte Dernière carte
      */
 
-    public function getDernCarte(int $i) : Carte{
-        if ($i < 0 || $i > 7 || $this->getNbCartesT($i) == 0){
-            throw new OutOfRangeException("Indice invalide");
-        }
-        return $this->piles[$i][$this->getNbCartesT($i)-1];
-    }
-
-    public function getCarteTable(int $Lig, int $Col) : Carte{
-        if ($Col >= $this->getNbCartesT($Lig) || $Col < 0){
+    public function voirCarte(int $i, int $j) :Carte {
+        if ($i < 0 || $i >= 7){
             throw new OutOfBoundsException("Indice invalide");
         }
-        return $this->piles[$Lig][$Col];
+        return $this->piles[$i]->getCarte($j);
     }
+    
 
 }
