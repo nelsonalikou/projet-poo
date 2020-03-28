@@ -83,7 +83,7 @@ Class Carte
     */
 
     public function isJoker () : bool{
-        return $this->valeur->getValeur()=="Jocker";
+        return $this->valeur->getValeur()=="Joker";
     }
 
     /**

@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(/*Partie $partie*/){
+    public function __construct(Partie $partie){
         $this->deck = new Deck();
         $this->home = new Home();
         $this->partie = $partie;
         $this->table = new Table();
-        $this->difficulte =/* $partie->getD*/$difficulte;
+        $this->difficulte = $partie->getDifficulte();
     }
 
     /**
@@ -168,7 +168,7 @@ class Tour{
                 $this->home->ajouterCarte($carteJoue);
                 $this->table->retirerCarte($nb);
 
-                $this->partie->ajouterScore($score*$combo);
+                //$this->partie->ajouterScore($score*$combo);
                 $combo++;
             }
 

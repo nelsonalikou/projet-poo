@@ -4,11 +4,11 @@ require_once("Pile.class.php");
 require_once("Carte.class.php");
 
 class Deck{
-    private $cartes; // Array
+    private $cartes; // Pile
 
     public function __construct()
     {
-        $this->cartes = [];
+        $this->cartes = new Pile;
     }
 
     /**
@@ -17,8 +17,8 @@ class Deck{
      * @return Nombre de cartes
      */
 
-    public function getNbCartesD() : int{
-        return count($this->cartes);
+    public function getNbCartes() : int{
+        return $this->cartes->getNbCartes();
     }
 
     /**
@@ -29,15 +29,9 @@ class Deck{
      */
 
     public function piocherCarte() : Carte
-        {
-        if (count($this->cartes) == 0){
-            throw new Exception("Le deck est vide");
-        }
-
-        $carte = $this->cartes[$this->getNbCartesD()-1];
-        $this->cartes = array_pop($this->cartes);
-
-        return $carte;
+    {
+        return $this->cartes->jouerCarte();
+        //ici on a un transfert d'exception
     }
 
     /**
@@ -47,9 +41,8 @@ class Deck{
      */
 
     public function ajouterCarte(Carte $carte) : void{
-        $this->cartes[] = $carte;
+        $this->cartes->ajouterCare($carte);
     }
-
     
 
 }

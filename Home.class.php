@@ -1,12 +1,10 @@
 <?php
 
 require_once("Pile.class.php");
-require_once("Deck.class.php");
-require_once("Table.class.php");
 require_once("Carte.class.php");
 
 class Home{
-    private $home; // Array de cartes
+    private $home; // Pile
 
     /**
      * Constructeur de la classe Home.
@@ -17,7 +15,7 @@ class Home{
 
     public function __construct(){
 
-        $this->home = [];
+        $this->home = new Pile;
 
     }
 
@@ -27,8 +25,8 @@ class Home{
     * @return Nombre de cartes
     */
 
-    public function getNbCartesH() : int{
-        return count($this->home);
+    public function getNbCartes() : int{
+        return $this->home->getNbCartes();
     }
 
      /**
@@ -38,7 +36,7 @@ class Home{
       */
 
     public function ajouterCarte(Carte $carte) : void{
-        $this->home[] = $carte;
+        $this->home->ajouterCarte($carte);
     }
 
     /**
@@ -46,12 +44,8 @@ class Home{
      *
      */
 
-    public function retirerCarte() : void{
-        if ($this->getNbCartes() == 0){
-            throw new OutOfRangeException("Le liste est deja vide");
-        }
-        $this->home = array_pop($this->home);
-    }
+    public function retirerCarte() : Carte{
+        return $this->home->jouerCarte();    }
 
     /**
 
@@ -60,9 +54,9 @@ class Home{
      * @return Derniere carte
      */
 
-    public function getHome() : Carte{
+    public function getDerniereCarte() : Carte{
 
-        return $this->home[($this->getNbCartesH())-1];
+        return $this->home->getCarte($this->getNbCartes()-1);
 
     }
 
@@ -73,23 +67,12 @@ class Home{
      */
 
     public function estJouable(Carte $carte) : bool{
-        return $carte->getOrdre() == $this->getHome()->getOrdre()-1 || $carte->getOrdre() == $this->getHome()->getOrdre()+1 || $carte->isJoker() || $this->getHome()->isJoker();
+        $ordre = $this->getDerniereCarte()->getOrdre();
+        return $carte->getOrdre() == $ordre-1 || $carte->getOrdre() == $ordre+1 || $carte->isJoker() || $this->getDerniereCarte()->isJoker();
     }
 
 
 
-     /**
-     * La méthode getCarteH() retourne la carte située au dessus du home, si pas de carte dans le home, la méthode lance une excpetion.
-     *
-     * @return Carte au dessus du home
-     */
-
-    public function getCarteH() : Carte{
-        if ( $this->getNbCartesH() == 0){
-            throw new OutOfBoundsException("Pas de cartes dans le home");
-        }
-        return $this->home[($this->getNbCartesH())-1];
-    }
 
      /**
       * Fonction d'affichage. Affiche uniquement la carte située au dessus du home.
@@ -99,7 +82,7 @@ class Home{
 
     public function __toString() {
         $res = "\n";
-        $res= $res."{$this->getCarteH($this->getNbCartesH()-1)}";
+        $res= $res."{$this->getDerniereCarte()}";
         $res= $res."\n";
 
         return $res;
