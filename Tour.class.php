@@ -200,6 +200,12 @@ class Tour{
             for ($i=0;$i<$this->table->getNbCol();$i++){
              
               #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
+              $nb
+                if ($this->table->getNbCartesT($j)<5){
+
+
+                }
+                else{
                 $val = $this->table->getCarteTable($i,$j)->getSymboleCouleur();
                 $Valeur = $this->table->getCarteTable($i,$j)->getValeur();
 
@@ -231,9 +237,11 @@ class Tour{
                         $res = " \e[47m \e[32;47m{$this->table->getCarteTable($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                 }
+            
                 $TabLigne[] = $res;
                 $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
                 $tabBlanc[] = " \e[47m     \e[0m";
+            }
 
                
             }
@@ -245,19 +253,22 @@ class Tour{
         }
 
     # complete le tableau avec des chaines vides si la carte est absente 
-        $TabTaille = [];
+      /*  $TabTaille = [];
         for ($lig = 0; $lig < 7; $lig++ ){
             $TabTaille[] = $this->table->getNbCartesT($lig);
 
             if ($TabTaille[$lig] < 5){
-                while (count($this->table->getNbCartesT($lig))<5){
-                    $Tabcouleur[$lig] = "";
-                    $TabValeur[$lig] = "";
-                    $TabBlanc[$lig] = "";
+                $nbLig = $TabTaille[$lig];
+                while ($nbLig < 5){
+                    $Tabcouleur[$lig][$nbLig] = "   ";
+                    $TabValeur[$lig][$nbLig] = "   ";
+                    $TabBlanc[$lig][$nbLig] = "   ";
+                    $nbLig++;
                 }
             }
         }
-         echo $TabTaille."\n";
+        $k = $TabTaille[0];
+         echo "$k"."\n";*/
         /*    for ($col = 7; $col < 7; $col++){
                 if  (in_array($Tabcouleur[$col][$lig],$TabCouleur)==true){
                     null;
@@ -280,6 +291,7 @@ class Tour{
         }
         printf( "%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s\n","1"," ", "2"," ","3"," ","4"," ","5"," ","6"," ","7"); #affihage des numeros de colonnes
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
+        printf("%9s",$TabCouleur[0][0]);
         print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
     } 
 

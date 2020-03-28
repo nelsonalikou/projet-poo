@@ -35,8 +35,7 @@ class Deck{
         }
 
         $carte = $this->cartes[$this->getNbCartesD()-1];
-        $this->cartes = array_pop($this->cartes);
-
+        array_splice($this->cartes,(count($this->cartes) - 1));
         return $carte;
     }
 
