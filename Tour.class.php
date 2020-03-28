@@ -214,12 +214,14 @@ class Tour{
                         $res = " \e[47m \e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                     }
                 }
+            
                 $TabLigne[] = $res;
                 $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
                 $tabBlanc[] = " \e[47m     \e[0m";
+            }
 
                
-            }
+            
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
             $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
@@ -228,7 +230,7 @@ class Tour{
         }
 
     # complete le tableau avec des chaines vides si la carte est absente 
-        $TabTaille = [];
+      /*  $TabTaille = [];
         for ($lig = 0; $lig < 7; $lig++ ){
             $TabTaille[] = $this->table->getNbCartesColonne($lig);
 

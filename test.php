@@ -12,7 +12,9 @@ if  ($taille<5){
 }
 $taille = count($tab);
 echo "$taille";
-$tab[0] = 5;
+$tab[0][3] = 5;
 $n = count($tab[0]);
 echo "$n\n";
+$taille = count($tab);
+echo "$taille";
 
