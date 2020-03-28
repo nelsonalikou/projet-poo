@@ -125,11 +125,6 @@ class Table{
         return $this->piles[$i][$this->getNbCartesT($i)-1];
     }
 
-
-    public function __toString() : string{
-
-    }
-
     public function getCarteTable(int $Lig, int $Col) : Carte{
         if ($Col >= $this->getNbCartesT($Lig) || $Col < 0){
             throw new OutOfBoundsException("Indice invalide");
