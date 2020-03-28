@@ -21,12 +21,12 @@ class Tour{
      * @param $partie
      */
 
-    public function __construct(Partie $partie){
+    public function __construct(/*Partie $partie*/){
         $this->deck = new Deck();
         $this->home = new Home();
         $this->partie = $partie;
         $this->table = new Table();
-        $this->difficulte = $partie->getDifficulte();
+        $this->difficulte =/* $partie->getD*/$difficulte;
     }
 
     /**
@@ -270,6 +270,7 @@ class Tour{
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
         print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
     } 
+
 
 
 public function delColonne() : void{

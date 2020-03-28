@@ -3,7 +3,7 @@
 require_once "Tour.class.php";
 
 
-$pile = new Tour(1);
+$pile = new Tour();
 $pile->distribution();
 
 $Home = $pile->getHome();
