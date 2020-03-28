@@ -62,15 +62,16 @@ class Table{
      * @param $i Indice de la pile
      */
 
-    public function retirerCarte(int $i) : void{
+    public function retirerCarte(int $i) :void /*array*/{
         if ($i < 0 || $i >= 7){
             throw new Exception("Indice invalide");
         }
         if ($this->getNbCartesT($i) == 0){
             throw new Exception("La pile est déjà vide");
         }
-
+       # $n = $this->piles->getDernCarte($i);
         $this->piles[$i] = array_pop($this->piles[$i]);
+        #return $n;
     }
 
     /**
@@ -136,8 +137,4 @@ class Table{
         return $this->piles[$Lig][$Col];
     }
 
-
-    public function getNbCartesCol(int $Col) : int{
-        return count($this->piles[$Col]);
-    }
 }

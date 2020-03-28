@@ -123,7 +123,7 @@ class Tour{
         while ($this->table->estVide() == False && $gagner){
             /*echo $this->table;
             echo $this->deck;*/
-            echo $this->home;   # Ewan ici je te conseille  echo "$this->home";  plutôt
+        #    echo $this->home;   # Ewan ici je te conseille  echo "$this->home";  plutôt
 
             switch($this->difficulte){
                 case 1:
@@ -204,7 +204,7 @@ class Tour{
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
         $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
         $TabBlanc = [];
-        for ($j=0;$j< $this->table->getNbCartesCol($numCol);$j++){
+        for ($j=0;$j< $this->table->getNbCartesT($numCol);$j++){
             $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
             $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
             $tabBlanc = [];
@@ -254,14 +254,23 @@ class Tour{
 
             $numCol++;
         }
-     /*   for ($lig = 0;$lig < 5; $lig++ ){
+
+    # complete le tableau avec des chaines vides si la carte est absente 
+        for ($lig = 0;$lig < 5; $lig++ ){
             for ($col = 7; $col < 7; $col++){
-                if ($Tabcouleur[$lig][$col] not in $TabCouleur)
+                if (in_array($Tabcouleur[$lig][$col],$TabCouleur)){
+
+                }
+                else{
+                    $Tabcouleur[$lig][$col] = "";
+                    $TabValeur[$lig][$col] = "";
+                    $TabBlanc[$lig][$col] = "";
+                }
             }
-        } */
+        } 
 
 /*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
-        for ($a=0;$a<$this->table->getNbCartesCol($numCol);$a++){
+        for ($a=0;$a<$this->table->getNbCartesT($numCol);$a++){
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]); 
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabBlanc[$a][0]," ", $TabBlanc[$a][1]," ",$TabBlanc[$a][2]," ",$TabBlanc[$a][3]," ",$TabBlanc[$a][4]," ",$TabBlanc[$a][5]," ",$TabBlanc[$a][6]);
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]); 
@@ -272,7 +281,14 @@ class Tour{
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
         print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
     } 
+
+
+public function delColonne() : void{
+    $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
+    $nb = (int) $nb;
+    $this->table->retirerCarte($nb);
+   # return $carte;
 }
 
-
+}
 #Rapport technique à faire

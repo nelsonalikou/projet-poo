@@ -20,3 +20,8 @@ var_dump($Table);
 echo "\n";
 
 $pile->afficherTour();
+echo "\n"."\n";
+$pile->delColonne();
+echo "\n"."\n";
+$pile->afficherTour();
+
