@@ -41,7 +41,7 @@ class Deck{
      */
 
     public function ajouterCarte(Carte $carte) : void{
-        $this->cartes->ajouterCare($carte);
+        $this->cartes->ajouterCarte($carte);
     }
     
 

@@ -280,7 +280,7 @@ class Tour{
         }
         printf( "%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s\n","1"," ", "2"," ","3"," ","4"," ","5"," ","6"," ","7"); #affihage des numeros de colonnes
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
-        print("Il reste {$this->deck->getNbCartesD()} cartes dans le Talon"."\n");
+        print("Il reste {$this->deck->getNbCartes()} cartes dans le Talon"."\n");
     } 
 
 
