@@ -203,12 +203,14 @@ class Tour{
         $numCol = 0; # compteur du numero de colonne de la Table
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
         $TabValeur = []; # création d'un tableau 2D pour stocker les symboles des couleurs
-        for ($j=0;$j<$this->table->getNbCartesCol($numCol);$j++){
+        $TabBlanc = [];
+        for ($j=0;$j< $this->table->getNbCartesCol($numCol);$j++){
             $TabLigne = []; # initialisation d'une colonne pour le $TabCouleur
             $TabCol = []; # initialisation d'une colonne pour le  $TabValeur
+            $tabBlanc = [];
             for ($i=0;$i<$this->table->getNbCol();$i++){
              
-                $coul = $this->table->getCarteTable($i,$j)->getCouleur();
+              #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
                 $val = $this->table->getCarteTable($i,$j)->getSymboleCouleur();
                 $Valeur = $this->table->getCarteTable($i,$j)->getValeur();
 
@@ -242,18 +244,26 @@ class Tour{
                 }
                 $TabLigne[] = $res;
                 $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
+                $tabBlanc[] = " \e[47m     \e[0m";
 
                
             }
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
+            $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
 
             $numCol++;
         }
-/*Récuperation du tableau  2D des symboles couleurs et symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
+     /*   for ($lig = 0;$lig < 5; $lig++ ){
+            for ($col = 7; $col < 7; $col++){
+                if ($Tabcouleur[$lig][$col] not in $TabCouleur)
+            }
+        } */
+
+/*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
         for ($a=0;$a<$this->table->getNbCartesCol($numCol);$a++){
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]); 
-            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n"," \e[47m     \e[0m"," ", " \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m"," "," \e[47m     \e[0m");
+            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabBlanc[$a][0]," ", $TabBlanc[$a][1]," ",$TabBlanc[$a][2]," ",$TabBlanc[$a][3]," ",$TabBlanc[$a][4]," ",$TabBlanc[$a][5]," ",$TabBlanc[$a][6]);
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]); 
             print("\n");
             
