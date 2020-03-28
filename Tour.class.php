@@ -121,7 +121,7 @@ class Tour{
             $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
 
             if ((string)$nb == "d"){
-                if ($this->deck->getNbCartesD() == 0){
+                if ($this->deck->getNbCartes() == 0){
                     $gagner = False;
                     return $gagner;
                 }else{
@@ -133,23 +133,23 @@ class Tour{
                 $nb = (int) $nb;
                 $nb--;
 
-                while ($nb < 0 || $nb > 7 || $this->table->getNbCartesT($nb) == 0){
+                while ($nb < 0 || $nb > 7 || $this->table->getNbCartesColonne($nb) == 0){
                     $nb = readLine("Numéro de colonne incorrect : ");
                     $nb = (int) $nb;
                     $nb--;
                 }
 
-                $carteJoue = $this->table->getDernCarte($nb);
+                $carteJoue = $this->table->voirCarte($nb, $this->table->getNbCartesColonne($nb)-1);
 
                 while ($this->home->estJouable($carteJoue) != True || $nb < 0 || $nb > 7){
                     $nb = readLine("Numéro de colonne incorrect : ");
                     $nb = (int) $nb;
                     $nb--;
-                    $carteJoue = $this->table->getDernCarte($nb);
+                    $carteJoue = $this->table->voirCarte($nb, $this->table->getNbCartesColonne($nb)-1);
                 }
 
                 $this->home->ajouterCarte($carteJoue);
-                $this->table->retirerCarte($nb);
+                $this->table->jouerCarte($nb);
 
                 //$this->partie->ajouterScore($score*$combo);
                 $combo++;
