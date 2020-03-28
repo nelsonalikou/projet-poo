@@ -101,23 +101,26 @@ class Tour{
 
     public function jouer() : bool{
         $gagner = True;
+        switch($this->difficulte){
+            case 1:
+                $score = 20;
+                $bonusTemps = 400;
+            break;
+            case 2:
+                $score = 40;
+                $bonusTemps = 750;
+            break;
+            case 3:
+                $score = 60;
+                $bonusTemps = 1250;
+            break;
+        }
 
         while ($this->table->estVide() == False && $gagner){
             $this->afficherTour();
-
-            switch($this->difficulte){
-                case 1:
-                    $score = 20;
-                break;
-                case 2:
-                    $score = 40;
-                break;
-                case 3:
-                    $score = 60;
-                break;
-            }
-
+            $tempsDeb = time();
             $combo = 1;
+            echo "Bonus de temps restant : ".$bonusTemps."\n";
             $nb = readLine("Entrez le numéro de la colonne (ou 'd' pour piocher) : ");
 
             if ((string)$nb == "d"){
@@ -151,11 +154,18 @@ class Tour{
                 $this->home->ajouterCarte($carteJoue);
                 $this->table->jouerCarte($nb);
 
-                //$this->partie->ajouterScore($score*$combo);
+                $this->partie->ajouterScore($score*$combo);
                 $combo++;
             }
 
+            if ($bonusTemps < 0){
+                $bonusTemps = 0;
+            }else{
+                $bonusTemps -= time()-$tempsDeb;
+            }
+            
         }
+        $this->partie->ajouterScore($bonusTemps);
         return $gagner;
     }
 
@@ -190,13 +200,11 @@ class Tour{
             for ($i=0;$i<7;$i++){
               #  $coul = $this->table->getCarteTable($i,$j)->getCouleur();
 
-                echo "Taille de la col : ".$this->table->getNbCartesColonne($i)."\n";
-                echo "taille Max : ".$tailleMax."\n";
                 if ($this->table->getNbCartesColonne($i) < $tailleMax && $j >= $this->table->getNbCartesColonne($i)){
 
-                    $TabLigne[] = "   ";
-                    $TabCol[] = "   ";
-                    $tabBlanc[] = "   ";
+                    $TabLigne[] = "";
+                    $TabCol[] = "";
+                    $tabBlanc[] = "";
 
                 }else{
                     $val = $this->table->voirCarte($i,$j)->getSymboleCouleur();

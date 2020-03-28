@@ -73,11 +73,24 @@ class Partie{
     */
 
     public function initialiser() : void{
+        switch($this->difficulte){
+            case 1:
+                $bonusDeck = 100;
+            break;
+            case 2:
+                $bonusDeck = 200;
+            break;
+            case 3:
+                $bonusDeck = 300;
+            break;
+        }
+
         $tour = new Tour($this);
         $tour->distribution();
         $gagne = $tour->jouer();
 
         while ($gagne){
+            $this->ajouterScore($tour->getDeck()->getNbCartes()*$bonusDeck);
             $this->ajouterScore(1000);
             $this->ajouterTourGagne();
             $tour->distribution();
