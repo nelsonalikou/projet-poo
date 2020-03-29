@@ -163,23 +163,48 @@ class Tour{
             }else{
                 $bonusTemps -= time()-$tempsDeb;
             }
-            
+
         }
         $this->partie->ajouterScore($bonusTemps);
         return $gagner;
     }
 
+    /**
+    * Accesseur au home. Retourne le home.
+    *
+    * @return home
+    */
+
     public function getHome() : Home{
         return $this->home;
     }
+
+    /**
+    * Accesseur au deck. Retourne le deck.
+    *
+    * @return deck
+    */
+
     public function getDeck() : Deck{
         return $this->deck;
     }
+
+    /**
+    * Accesseur a la table. Retourne la table.
+    *
+    * @return table
+    */
+
     public function getTable() : Table{
         return $this->table;
     }
 
-
+    /**
+     * Fonction d'affichage. Permet de faire un affichage du jeu.
+     * Ne prend pas de paramètres
+     *
+     * @return affichage
+     */
 
     public function afficherTour() : void{
         $TabCouleur = []; # création d'un tableau 2D pour stocker les symboles des valeurs
@@ -217,18 +242,18 @@ class Tour{
                         else{
                             $res = " \e[47m \e[30;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                         }
-                    
+
                     }
 
                     else if (/*$coul=="Coeur" || $coul == "Pique"*/  $val == "\e[31;47m♦\e[0m" || $val == "\e[31;47m♥\e[0m"){
-                    
+
                         if ($Valeur == 10){
                             $res = " \e[47m\e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                         }
                         else{
                             $res = " \e[47m \e[31;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                         }
-                    
+
                     }
                     else {
                         if ($Valeur == 10){
@@ -238,23 +263,23 @@ class Tour{
                             $res = " \e[47m \e[32;47m{$this->table->voirCarte($i,$j)->getSymboleValeur()}\e[0m\e[0m"."\e[47m   \e[0m";
                         }
                     }
-                
+
                     $TabLigne[] = $res;
                     $TabCol[] = " \e[47m   $val\e[0m"."\e[47m \e[0m";
                     $tabBlanc[] = " \e[47m     \e[0m";
                 }
 
-                
+
             }
 
-        
-            
+
+
             $TabCouleur[] = $TabLigne; #ajout de la colonne initialisée
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
-            $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
+            $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée
         }
 
-    # complete le tableau avec des chaines vides si la carte est absente 
+    # complete le tableau avec des chaines vides si la carte est absente
       /*  $TabTaille = [];
         for ($lig = 0; $lig < 7; $lig++ ){
             $TabTaille[] = $this->table->getNbCartesColonne($lig);
@@ -277,28 +302,32 @@ class Tour{
                     $TabBlanc[$col][$lig] = "";
                 }
             }*/
-         
+
 
 /*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
         for ($a=0;$a<$tailleMax;$a++){
-            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]); 
+            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabCouleur[$a][0]," ", $TabCouleur[$a][1]," ",$TabCouleur[$a][2]," ",$TabCouleur[$a][3]," ",$TabCouleur[$a][4]," ",$TabCouleur[$a][5]," ",$TabCouleur[$a][6]);
             printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabBlanc[$a][0]," ", $TabBlanc[$a][1]," ",$TabBlanc[$a][2]," ",$TabBlanc[$a][3]," ",$TabBlanc[$a][4]," ",$TabBlanc[$a][5]," ",$TabBlanc[$a][6]);
-            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]); 
+            printf( "%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s%5s%9s\n",$TabValeur[$a][0]," ", $TabValeur[$a][1]," ",$TabValeur[$a][2]," ",$TabValeur[$a][3]," ",$TabValeur[$a][4]," ",$TabValeur[$a][5]," ",$TabValeur[$a][6]);
             print("\n");
-            
+
         }
         printf( "%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s%9s%2s\n","1"," ", "2"," ","3"," ","4"," ","5"," ","6"," ","7"); #affihage des numeros de colonnes
-        echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
+        echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument)
         print("Il reste {$this->deck->getNbCartes()} cartes dans le Talon"."\n");
-    } 
+    }
 
-
+    /**
+     * Fonction permettant de supprimer une carte d'une colonne.
+     * Ne prend pas de paramètres.
+     *
+     */
 
 public function delColonne() : void{
     $nb = readLine("Entrez le numéro de la colonne entre 1 et 7 (ou 'd' pour piocher) : ");
     $nb = (int) $nb;
     $this->table->jouerCarte($nb-1);
-   
+
 }
 
 }
