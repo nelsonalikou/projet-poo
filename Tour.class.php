@@ -144,7 +144,7 @@ class Tour{
 
                 $carteJoue = $this->table->voirCarte($nb, $this->table->getNbCartesColonne($nb)-1);
 
-                while ($this->home->estJouable($carteJoue) != True || $nb < 0 || $nb > 7){
+                while ($this->home->estJouable($carteJoue, $this->difficulte) != True || $nb < 0 || $nb > 7){
                     $nb = readLine("Numéro de colonne incorrect : ");
                     $nb = (int) $nb;
                     $nb--;

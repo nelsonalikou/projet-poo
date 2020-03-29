@@ -66,9 +66,17 @@ class Home{
      * @return True si la carte est jouable, False sinon
      */
 
-    public function estJouable(Carte $carte) : bool{
-        $ordre = $this->getDerniereCarte()->getOrdre();
-        return $carte->getOrdre() == $ordre-1 || $carte->getOrdre() == $ordre+1 || $carte->isJoker() || $this->getDerniereCarte()->isJoker();
+    public function estJouable(Carte $carte, int $difficulte) : bool{
+        $valeurHome = $this->getDerniereCarte()->getSymboleValeur();
+        $valeurCarte = $carte->getSymboleValeur();
+        if ($difficulte == 1 && ($valeurHome == "R" && $valeurCarte == "A" || $valeurCarte == "R" && $valeurHome == "A")){
+            $res = True;
+        }else{
+            $ordre = $this->getDerniereCarte()->getOrdre();
+            $res = $carte->getOrdre() == $ordre-1 || $carte->getOrdre() == $ordre+1 || $carte->isJoker() || $this->getDerniereCarte()->isJoker();
+        }
+
+        return $res;
     }
 
 
