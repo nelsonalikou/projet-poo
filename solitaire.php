@@ -1,5 +1,12 @@
 <?php
 require_once("Partie.class.php");
 
-$partie = new Partie(1);
+$difficulte = readLine("Choisissez une difficulté (1 à 3) : ");
+$difficulte = (int) $difficulte;
+while ($difficulte < 1 || $difficulte > 3){
+    $difficulte = readLine("Choisissez une difficulté (1 à 3) : ");
+    $difficulte = (int) $difficulte;
+}
+
+$partie = new Partie($difficulte);
 $partie->initialiser();

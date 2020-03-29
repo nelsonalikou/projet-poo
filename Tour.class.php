@@ -47,6 +47,7 @@ class Tour{
      */
 
     public function setDeck(Pile $tas) : void{
+        $this->deck = new Deck();
         for ($i = 0; $i < 20; $i++){
             $carte = $tas->jouerCarte();
             $this->deck->ajouterCarte($carte);
@@ -145,7 +146,7 @@ class Tour{
                 $carteJoue = $this->table->voirCarte($nb, $this->table->getNbCartesColonne($nb)-1);
 
                 while ($this->home->estJouable($carteJoue, $this->difficulte) != True || $nb < 0 || $nb > 7){
-                    $nb = readLine("Numéro de colonne incorrect : ");
+                    $nb = readLine("Carte non jouable, choisissez en une autre : ");
                     $nb = (int) $nb;
                     $nb--;
                     $carteJoue = $this->table->voirCarte($nb, $this->table->getNbCartesColonne($nb)-1);
@@ -165,7 +166,10 @@ class Tour{
             }
             
         }
-        $this->partie->ajouterScore($bonusTemps);
+        if ($gagner){
+            $this->partie->ajouterScore($bonusTemps);
+        }
+        
         return $gagner;
     }
 
@@ -291,15 +295,6 @@ class Tour{
         echo "$this->home\n"; # affichage du home (carte au dessus du home uniqument) 
         print("Il reste {$this->deck->getNbCartes()} cartes dans le Talon"."\n");
     } 
-
-
-
-public function delColonne() : void{
-    $nb = readLine("Entrez le numéro de la colonne entre 1 et 7 (ou 'd' pour piocher) : ");
-    $nb = (int) $nb;
-    $this->table->jouerCarte($nb-1);
-   
-}
 
 }
 #Rapport technique à faire
