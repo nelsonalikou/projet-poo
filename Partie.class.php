@@ -1,5 +1,7 @@
 <?php
 
+# ALIKOU DONGMO Nelson & GRAVE Ewan & VANNIER Alexandre
+
 require_once("Tour.class.php");
 
 class Partie{
@@ -100,7 +102,8 @@ class Partie{
         echo "Votre score final : ".$this->score;
     }
 
-    public function sauvegarder() : void{
 
-    }
+   /* public function sauvegarder() : void{
+
+    }*/
 }

@@ -1,4 +1,7 @@
 <?php
+
+# ALIKOU DONGMO Nelson & GRAVE Ewan & VANNIER Alexandre
+
 class Valeur{
     private $valeur; // string
 
