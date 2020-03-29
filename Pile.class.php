@@ -2,6 +2,8 @@
 
 require_once("Carte.class.php");
 
+# ALIKOU DONGMO Nelson & GRAVE Ewan & VANNIER Alexandre
+
 class Pile{
     private $cartes; // array de Cartes
 
@@ -136,27 +138,3 @@ class Pile{
 
 }
 
-
-    function printSideBySide( Carte  $C1,  Carte  $C2) : void{
-        $n = 0;
-        while ($n < ($this->getNbCartes()-1)){
-            if ($this->cartes[$n] == $C1){
-                $indiceC1 = $n;
-            }
-            else if (($this->cartes[$n] == $C2) ){
-                $indiceC2 = $n;
-            }
-
-            $n++;
-        }   
-        print($this->getCarte($indiceC1).$this->getCarte($indiceC2));
-       # print($this->getCarte($indiceC2));
-    }
-
-    function printSideBySide2( Carte  $C1,  Carte  $C2) : void{
-       
-        print($C1->getSymboleValeur()."   ".$C2->getSymboleValeur()."\n");
-        print(" "."   "." "."\n");
-        print($C1->getCouleur()."   ".$C2->getCouleur());
-       # print($this->getCarte($indiceC2));
-    }

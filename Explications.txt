@@ -4,4 +4,5 @@
 "\e[32;47m      \e[0m"  : tansforme son contenu en lui donant une couleur verte
 
 
+
 probleme methode avec jouer 

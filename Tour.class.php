@@ -1,5 +1,7 @@
 <?php
 
+# ALIKOU DONGMO Nelson & GRAVE Ewan & VANNIER Alexandre
+
 require_once("Deck.class.php");
 require_once("Partie.class.php");
 require_once("Home.class.php");
@@ -253,30 +255,6 @@ class Tour{
             $TabValeur[] = $TabCol; #ajout de la colonne initialisée
             $TabBlanc[] = $tabBlanc; #ajout de la colonne initialisée 
         }
-
-    # complete le tableau avec des chaines vides si la carte est absente 
-      /*  $TabTaille = [];
-        for ($lig = 0; $lig < 7; $lig++ ){
-            $TabTaille[] = $this->table->getNbCartesColonne($lig);
-
-            if ($TabTaille[$lig] < 5){
-                while (count($this->table->getNbCartesColonne($lig))<5){
-                    $Tabcouleur[$lig] = "";
-                    $TabValeur[$lig] = "";
-                    $TabBlanc[$lig] = "";
-                }
-            }
-        }
-        /*    for ($col = 7; $col < 7; $col++){
-                if  (in_array($Tabcouleur[$col][$lig],$TabCouleur)==true){
-                    null;
-                }
-                else{
-                    $Tabcouleur[$col][$lig] = "";
-                    $TabValeur[$col][$lig] = "";
-                    $TabBlanc[$col][$lig] = "";
-                }
-            }*/
          
 
 /*Récuperation du tableau  2D des symboles couleurs, des barres blanches et des symbole valeur, puis affichage de ceux-ci, séparés par une ligne blanche entre-coupée d'espaces  */
@@ -302,4 +280,3 @@ public function delColonne() : void{
 }
 
 }
-#Rapport technique à faire
